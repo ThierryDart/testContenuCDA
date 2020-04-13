@@ -1,0 +1,1914 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="cda_asip.xsl"?>
+
+<?oxygen SCHSchema="schematrons/profils/IHE.sch"?>
+<?oxygen SCHSchema="schematrons/profils/ModelesDeContenuCDA.sch"?>
+<?oxygen SCHSchema="schematrons/profils/IHE_XDS-SD.sch"?>
+<?oxygen SCHSchema="schematrons/profils/CI-SIS_StructurationMinimale.sch"?>
+<?oxygen SCHSchema="schematrons/profils/ModelesASIP.sch"?>
+<?oxygen SCHSchema="schematrons/CI-SIS_AVC_PostAVC.sch"?>
+ 
+<ClinicalDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="urn:hl7-org:v3 infrastructure/cda/CDA.xsd" xmlns="urn:hl7-org:v3">
+   
+    <!-- 
+      **********************************************************************************************************
+      Système : ASIP Santé
+      Document : Evaluation Pluri Professionnelle Post AVC (PostAVC)
+      Auteur : PML
+      Version : 2.2
+      **********************************************************************************************************
+      format HL7 - CDA Release 2 - selon schéma XML (CDA.xsd) du standard ANSI/HL7 CDA, R2-2005 4/21/2005
+      **********************************************************************************************************
+   -->
+    
+    <realmCode code="FR"/>
+    <!-- Référencement CDAr2/Interopérabilité de niveau 3 -->
+    <typeId root="2.16.840.1.113883.1.3" extension="POCD_HD000040"/>
+    <!-- Conformité spécifications HL7 France -->
+    <templateId root="2.16.840.1.113883.2.8.2.1"/>
+    <!-- Conformité spécifications au CI-SIS de l"ASIP Santé -->
+    <templateId root="1.2.250.1.213.1.1.1.1"/>
+    <!-- Evaluation Pluri Professionnelle Post AVC (PostAVC)-->
+    <templateId root="1.2.250.1.213.1.1.1.25"/>  
+    <!-- Identifiant du document -->
+    <id root="1.2.250.1.213.1.1.9" extension="A7102400008_040"/>
+    <code code="11488-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"
+        displayName="CR ou fiche de consultation ou de visite"/>
+    <title>CONSULTATION D’EVALUATION PLURI-PROFESSIONNELLE POST-AVC (PostAVC)</title>
+    <effectiveTime value="291812011100+0100"/>
+    <confidentialityCode code="N" codeSystem="2.16.840.1.113883.5.25"
+        codeSystemName="Confidentiality" displayName="Normal"/>
+    <languageCode code="fr-FR"/>
+    <setId root="1.2.250.1.213.1.1.9" extension="A7102400008"/>
+    <versionNumber value="1"/>
+    <!-- Patient -->    
+    <recordTarget>
+        <patientRole>
+            <!-- pour l"INS-A root= "1.2.250.1.213.1.4.1"-->
+            <id extension="1234567890112345678901" root="1.2.250.1.213.1.4.2"/><!--INS-C-->
+            <addr use="H">
+                <houseNumber>24</houseNumber>
+                <streetNameType>Avenue</streetNameType>
+                <streetName>Breteuil</streetName>
+                <postalCode>75007</postalCode>
+                <city>Paris</city>
+            </addr>
+            <telecom value="tel:0686970800" use="MC"/>
+            <telecom value="tel:0186940900" use="H"/>
+            <patient classCode="PSN">
+                <name>
+                    <given>Marie</given>
+                    <family qualifier="BR">DECOURCY</family>
+                    <family qualifier="SP" nullFlavor="NAV"/>
+                </name>
+                <administrativeGenderCode code="F"/>
+                <birthTime value="19800315"/>      
+            </patient>
+        </patientRole>
+    </recordTarget>
+    
+    <!-- Auteur du document -->    
+    <author>
+        <time value="291812011200+0100"/>
+        <assignedAuthor classCode="ASSIGNED">
+            <id root="1.2.250.1.71.4.2.1" extension="801234567897" assigningAuthorityName="ASIP Santé"/>
+            <code code="G15_10/SM32" codeSystem="1.2.250.1.213.1.1.4.5" codeSystemName="RPPS"  displayName="Médecin – Neurologie (SM)"/>
+            <addr nullFlavor="NASK"/>
+            <telecom nullFlavor="NASK"/>
+            <assignedPerson>
+                <name>
+                    <given>Jacques</given>
+                    <family>BIDEAULT</family>
+                    <prefix>Dr.</prefix>
+                </name>
+            </assignedPerson>
+            <representedOrganization>
+                <id root="1.2.250.1.71.4.2.2" extension="101238887" assigningAuthorityName="ASIP Santé"/><!--id national de la structure-->
+                <name>Clinique du Belvédère</name>
+                <telecom nullFlavor="NAV"/>
+                <addr>
+                    <houseNumber>142</houseNumber>
+                    <streetNameType>rue</streetNameType>
+                    <streetName>Belvédère</streetName>
+                    <postalCode>92100</postalCode>
+                    <city>Boulogne-Billancourt</city>
+                </addr>
+                <standardIndustryClassCode code="ETABLISSEMENT" 
+                    displayName="Établissement de santé"
+                    codeSystem="1.2.250.1.213.1.1.4.9" codeSystemName="practiceSettingCode"/>
+            </representedOrganization>
+        </assignedAuthor>
+    </author>
+	
+    <!-- Personne à prévenir en cas d'urgence (aidant référent) -->  	
+    <informant>
+        <relatedEntity classCode="ECON">
+            <code code="SON" displayName="Fils"/>
+            <addr nullFlavor="NAV"/>
+            <telecom value="tel:0647150100" use="MC"/>
+            <relatedPerson>
+                <name>
+                    <family>DECOURCY</family>
+                    <given>Sophie</given>
+                </name>
+            </relatedPerson>
+        </relatedEntity>
+    </informant>
+    
+    <!-- Organisation chargée de la conservation du document -->    
+    <custodian typeCode="CST">
+        <assignedCustodian classCode="ASSIGNED">
+            <representedCustodianOrganization classCode="ORG" determinerCode="INSTANCE">
+                <id root="1.2.250.1.71.4.2.2" extension="1120456789" assigningAuthorityName="GIP-CPS"/>
+                <name>Clinique du Belvédère</name>
+                <telecom value="tel:0442515151" use="WP"/>
+                <addr>
+                    <houseNumber>142</houseNumber>
+                    <streetNameType>rue</streetNameType>
+                    <streetName>Belvédère</streetName>
+                    <postalCode>92100</postalCode>
+                    <city>Boulogne-Billancourt</city>
+                </addr>
+            </representedCustodianOrganization>
+        </assignedCustodian>
+    </custodian>
+      
+    <!-- Responsable du document -->
+    <legalAuthenticator>
+        <time value="291812011218+0100"/>
+        <signatureCode code="S"/>
+        <assignedEntity>
+            <realmCode code="FR"/>
+            <id root="1.2.250.1.71.4.2.1" extension="801234567897" assigningAuthorityName="ASIP Santé"/>
+            <code code="G15_10/SM32" codeSystem="1.2.250.1.213.1.1.4.5" codeSystemName="RPPS" displayName="Médecin – Neurologie (SM)"/>
+            <assignedPerson>
+                <name>
+                    <given>Jacques </given>
+                    <family>BIDEAULT</family>
+                    <prefix>DR</prefix>
+                    <suffix/>
+                </name>
+            </assignedPerson>
+        </assignedEntity>
+    </legalAuthenticator>
+    
+    <!-- Médecin traitant -->
+    <participant typeCode="INF">
+        <functionCode code="PCP" codeSystem="2.16.840.1.113883.5.88"/>
+        <time xsi:type="IVL_TS">
+            <low value="20181201111700+0100"/>
+        </time>
+        <associatedEntity classCode="PROV">
+            <id root="1.2.250.1.71.4.2.1" extension="801234567897"/>
+            <addr>
+                <houseNumber>3</houseNumber>
+                <streetNameType>rue</streetNameType>
+                <streetName>Petit Pont</streetName>
+                <postalCode>75005</postalCode>
+                <city>Paris</city>
+            </addr>
+            <telecom value="tel:0147150000" use="EC"/>
+            <associatedPerson>
+                <name>
+                    <family>MEDIONI</family>
+                    <given>Stéphane</given>
+                    <prefix>DR</prefix>
+                </name>
+            </associatedPerson>         
+        </associatedEntity>
+    </participant>
+	
+    <!-- Médecin référent -->
+    <participant typeCode="INF">
+        <functionCode code="ATTPHYS" codeSystem="2.16.840.1.113883.5.88"/>
+        <time xsi:type="IVL_TS">
+            <low value="20181201111700+0100"/>
+        </time>
+        <associatedEntity classCode="PROV">
+            <id root="1.2.250.1.71.4.2.1" extension="801234567897"/>
+            <addr>
+                <houseNumber>3</houseNumber>
+                <streetNameType>rue</streetNameType>
+                <streetName>Petit Pont</streetName>
+                <postalCode>75005</postalCode>
+                <city>Paris</city>
+            </addr>
+            <telecom value="tel:0147160000" use="EC"/>
+            <associatedPerson>
+                <name>
+                    <family>DUPONT</family>
+                    <given>Thierry</given>
+                    <prefix>DR</prefix>
+                </name>
+            </associatedPerson>         
+        </associatedEntity>
+    </participant>
+    
+    <!-- Acte documenté --> 
+    <documentationOf>
+        <serviceEvent classCode="ACT">
+            <id root="22752fcd-2477-4ab8-8ab3-762dd4333ea1"/>
+            <code code="51847-2" displayName="Consultation d'évaluations pluri professionnelle Post AVC" 
+                codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
+            <effectiveTime>
+                <low value="20181201111700+0100"/>
+                <high value="20181201111700+0100"/>
+            </effectiveTime>
+            <performer typeCode="PRF">
+                <assignedEntity>
+                    <realmCode code="FR"/>
+                    <id root="1.2.250.1.71.4.2.1" extension="801234567897" assigningAuthorityName="ASIP Santé"/>
+                    <code code="G15_10/SM32" codeSystem="1.2.250.1.213.1.1.4.5" 
+                        codeSystemName="RPPS" displayName="Médecin – Neurologie (SM)"/>
+                    <assignedPerson>
+                        <name>
+                            <given>Jacques </given>
+                            <family>BIDEAULT</family>
+                            <prefix>Docteur</prefix>
+                            <suffix/>
+                        </name>
+                    </assignedPerson>
+                    <representedOrganization>
+                        <id root="1.2.250.1.71.4.2.2" extension="101238887" assigningAuthorityName="ASIP Santé"/>
+                        <name>Clinique du Belvédère</name>
+                        <telecom nullFlavor="NAV"/>
+                        <addr>
+                            <houseNumber>142</houseNumber>
+                            <streetNameType>rue</streetNameType>
+                            <streetName>Belvédère</streetName>
+                            <postalCode>92100</postalCode>
+                            <city>Boulogne-Billancourt</city>
+                        </addr>
+                        <standardIndustryClassCode code="ETABLISSEMENT" 
+                            displayName="Établissement de santé"
+                            codeSystem="1.2.250.1.213.1.1.4.9" codeSystemName="practiceSettingCode"/>
+                    </representedOrganization>
+                </assignedEntity>
+            </performer>
+        </serviceEvent>
+    </documentationOf>
+	
+    <!-- Prise en charge -->     
+    <componentOf>
+        <encompassingEncounter>
+            <effectiveTime>
+                <high value="20181201111700+0100"/>
+            </effectiveTime>
+            <location>
+                <healthCareFacility>
+                  
+                    <code code="SA01" displayName="Etablissement Public de santé"
+                        codeSystem="1.2.250.1.71.4.2.4" codeSystemName="R02"> </code>
+                </healthCareFacility>
+            </location>
+        </encompassingEncounter>
+    </componentOf>
+    
+    <!-- 
+      ********************************************************
+      Corps du document
+      ********************************************************
+   -->
+    <component>
+        <structuredBody>
+		
+            <!-- Section Liste des pathologies en cours -->            
+            <component>
+                <section>
+                    <templateId root="2.16.840.1.113883.10.20.1.11"/>
+                    <templateId root="1.3.6.1.4.1.19376.1.5.3.1.3.6"/>
+                    <id root="e261e90a-e565-4737-a1f3-819b23321e5b"/>
+                    <code code="11450-4" displayName="Liste des problèmes actifs" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
+					<title>Evaluation éducation thérapeutique et prévention secondaire (E1)</title>
+					<text>
+						<table border="1">
+
+							<tbody align="left">
+								<tr><td>Pathologie</td><td><content ID="infarctus">Infarctus</content></td></tr>
+								<tr><td>Risque de récidive</td><td><content ID="recidive">oui</content></td></tr>
+								<tr><td>ALD</td><td><content ID="ald">non</content></td></tr>
+							</tbody>
+						</table>
+						<br/>
+						<table border="1">
+							<thead align="left">
+								<tr><th>Facteur de risque à surveiller</th><th>Observation</th></tr>
+							</thead>
+							<tbody align="left">
+								<tr><td>HTA</td><td><content ID="hta">oui</content></td></tr>
+								<tr><td>Diabète</td><td><content ID="diabete">non</content></td></tr>
+								<tr><td>Obésité</td><td><content ID="obesite">non</content></td></tr>
+								<tr><td>Tabac</td><td><content ID="tabac">non</content></td></tr>
+								<tr><td>Dyslipidémie</td><td><content ID="dyslipidemie">non</content></td></tr>
+							</tbody>
+						</table>
+						<br/>
+						<table border="1">
+							<thead align="left">
+								<tr><th>Ethiologie identifiée, à surveiller</th><th>Observation</th></tr>
+							</thead>
+							<tbody align="left">																
+								<tr><td>Ethiologie cardiaque</td><td><content ID="cardiaque">non</content></td></tr>								
+								<tr><td>Ethiologie hématologique</td><td><content ID="hematologique">non</content></td></tr>
+								<tr><td>Ethiologie Maladie génétique</td><td><content ID="gen">non</content></td></tr>
+							</tbody>
+						</table>
+						<br/>
+						<table border="1">
+							<thead align="left">
+								<tr><th>Existence de polypathologies associées (E4)</th><th>Observation</th></tr>
+							</thead>
+							<tbody align="left">			
+								<tr><td>Surhandicap</td><td><content ID="surhandicap">non</content></td></tr>
+								<tr><td>Plurihandicap</td><td><content ID="plurihandicap">non</content></td></tr>
+								<tr><td>Polyhandicap</td><td><content ID="polyhandicap">non</content></td></tr>
+								<tr><td>Polypathologies</td><td><content ID="polypathologies">non</content></td></tr>								
+							</tbody>
+						</table>				
+					</text>  
+                    <!-- Entrée Pathologies non allergiques -->
+                    <entry> 
+                        <act classCode="ACT" moodCode="EVN">
+                            <templateId root="2.16.840.1.113883.10.20.1.27"/>
+                            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.5.1"/>
+                            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.5.2"/>
+                            <id root="b65a536b-ff5c-4cb5-8a22-4a0679e96433"/>
+                            <code  nullFlavor="NA"/>
+                            <statusCode code="completed"/>
+                            <effectiveTime nullFlavor="UNK"/>
+                            
+                            <!--Infarctus ou hemorragie avec fdr a surveiller-->
+                            <entryRelationship typeCode="SUBJ" inversionInd="false">
+                                <observation classCode="OBS" moodCode="EVN" negationInd="true">
+                                    <templateId root="2.16.840.1.113883.10.20.1.28"/>
+                                    <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.5"/>
+                                    <id root="bf6e6515-8c5f-4cfa-8f2f-55b98730748c"/>
+                                    <code code="G-1009" displayName="Diagnostic" codeSystem="1.2.250.1.213.2.12" codeSystemName="SNOMED 3.5"/>
+                                    <text><reference value="#infarctus"></reference></text>
+                                    <statusCode code="completed"/>
+                                    <effectiveTime>
+                                        <low nullFlavor="UNK"/>
+                                    </effectiveTime>
+                                    <value xsi:type="CD" code="I63.9" displayName="Infarctus cérébral" codeSystem="2.16.840.1.113883.6.3" codeSystemName="CIM10">
+                                        <originalText>
+                                            <reference value="#infarctus"></reference>
+                                        </originalText>
+                                    </value>
+                                </observation>
+                            </entryRelationship>
+							
+                            <!--Risque de récidive-->
+                            <entryRelationship typeCode="COMP" inversionInd="false">
+                                <observation classCode="OBS" moodCode="EVN">
+                                    <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.13"/>
+                                    <id root="548ab139-5426-410d-9c11-6095b109f442"/>
+                                    <code code="MED-325" displayName="Risque de récidive" codeSystem="1.2.250.1.213.1.1.4.322" codeSystemName="TA_ASIP"/>
+                                    <text><reference value="#recidive"></reference></text>
+                                    <statusCode code="completed"/>
+                                    <effectiveTime>
+                                        <low nullFlavor="UNK"/>
+                                    </effectiveTime>
+                                    <value xsi:type="BL" value="true"/>
+                                </observation>
+                            </entryRelationship>  
+							
+							<!-- Facteur de risque à surveiller : HTA -->
+                            <entryRelationship typeCode="REFR">
+                                <observation classCode="OBS" moodCode="EVN">
+                                    <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.13"/>
+                                    <id root="c893e5f5-a165-4d2f-958e-62033e76d23e"/>
+                                    <code code='I10' displayName='HTA' codeSystem="2.16.840.1.113883.6.3" codeSystemName="CIM-10"/>
+                                    <text><reference value="#hta"></reference></text>
+                                    <statusCode code="completed"/>
+                                    <effectiveTime nullFlavor="NA"/>
+                                    <value xsi:type="BL" value="true"/>
+                                </observation>
+                            </entryRelationship>
+							
+                            <!-- Facteur de risque à surveiller : Diabète -->
+                            <entryRelationship typeCode="REFR">
+                                <observation classCode="OBS" moodCode="EVN">
+                                    <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.13"/>
+                                    <id root="cec71e67-633c-476d-a843-67ce2376a243"/>
+                                    <code code='E14.9' displayName='Diabète sucré' codeSystem="2.16.840.1.113883.6.3" codeSystemName="CIM-10"/>
+                                    <text><reference value="#diabete"></reference></text>
+                                    <statusCode code="completed"/>
+                                    <effectiveTime nullFlavor="NA"/>
+                                    <value xsi:type="BL" value="false"/>
+                                </observation>
+                            </entryRelationship>
+                            
+							<!-- Facteur de risque à surveiller : Obésité -->
+                            <entryRelationship typeCode="REFR">
+                                <observation classCode="OBS" moodCode="EVN">
+                                    <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.13"/>
+                                    <id root="f49d17d0-ae8f-404e-a071-657e77fd8397"/>
+                                    <code code='E66.9' displayName='Obésité' codeSystem="2.16.840.1.113883.6.3" codeSystemName="CIM-10"/>
+                                    <text><reference value="#obesite"></reference></text>
+                                    <statusCode code="completed"/>
+                                    <effectiveTime nullFlavor="NA"/>
+                                    <value xsi:type="BL" value="false"/>
+                                </observation>
+                            </entryRelationship>
+                            
+                            <!-- Facteur de risque à surveiller : Tabac -->
+							<entryRelationship typeCode="REFR">
+                                <observation classCode="OBS" moodCode="EVN">
+                                    <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.13"/>
+                                    <id root="bf6e6515-8c5f-4cfa-8f2f-55b98730748c"/>
+                                    <code code='F17.2' displayName='Tabac' codeSystem="2.16.840.1.113883.6.3" codeSystemName="CIM-10"/>
+                                    <text><reference value="#tabac"></reference></text>
+                                    <statusCode code="completed"/>
+                                    <effectiveTime nullFlavor="NA"/>
+                                    <value xsi:type="BL" value="false"/>
+                                </observation>
+                            </entryRelationship>
+                            
+							<!-- Facteur de risque à surveiller : Dyslipidémie -->
+                            <entryRelationship typeCode="REFR">
+                                <observation classCode="OBS" moodCode="EVN">
+                                    <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.13"/>
+                                    <id root="190aefbf-a24a-4be7-ab00-14b6a10c9ec2"/>
+                                    <code code="E78" displayName="Anomalies du métabolisme des lipoprotéines et autres lipidémies" codeSystem="2.16.840.1.113883.6.3" codeSystemName="CIM-10"/>
+                                    <text><reference value="#dyslipidemie"></reference></text>
+                                    <statusCode code="completed"/>
+                                    <effectiveTime nullFlavor="NA"/>
+                                    <value xsi:type="BL" value="false"/>
+                                </observation>
+                            </entryRelationship>
+							
+							<!-- Ethiologie cardiaque -->
+                            <entryRelationship typeCode="RSON">
+                                <observation classCode="OBS" moodCode="EVN">
+                                    <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.13"/>
+                                    <id root="6624ae03-dd2e-484f-b89a-2e09df282311"/>
+                                    <code code="I51.6" displayName="Maladie cardio-vasculaire, sans précision" codeSystem="2.16.840.1.113883.6.3" codeSystemName="CIM-10"/>
+                                    <text><reference value="#cardiaque"></reference></text>
+                                    <statusCode code="completed"/>
+                                    <effectiveTime nullFlavor="NA"/>
+                                    <value xsi:type="BL" value="false"/>
+                                </observation>
+                            </entryRelationship>
+							
+							<!-- Ethiologie hémathologique -->
+                            <entryRelationship typeCode="RSON">
+                                <observation classCode="OBS" moodCode="EVN">
+                                    <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.13"/>
+                                    <id root="05689544-5321-4034-b2e1-779ca38d0db6"/>
+                                    <code code="G-B113" displayName="Ethiologie hémathologique" codeSystem="1.2.250.1.213.2.12" codeSystemName="SNOMED 3.5"/>
+                                    <text><reference value="#hematologique"></reference></text>
+                                    <statusCode code="completed"/>
+                                    <effectiveTime nullFlavor="NA"/>
+                                    <value xsi:type="BL" value="false"/>
+                                </observation>
+                            </entryRelationship>
+							
+							<!-- Ethiologie maladie génétique -->
+                            <entryRelationship typeCode="REFR">
+                                <observation classCode="OBS" moodCode="EVN">
+                                    <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.13"/>
+                                    <id root="cde01113-8489-4ba8-8504-a905c2731ea3"/>
+                                    <code code="DF-00180" displayName="Ethiologie maladie génétique" codeSystem="2.16.840.1.113883.6.3" codeSystemName="CIM-10"/>
+                                    <text><reference value="#gen"></reference></text>
+                                    <statusCode code="completed"/>
+                                    <effectiveTime nullFlavor="NA"/>
+                                    <value xsi:type="BL" value="false"/>
+                                </observation>
+                            </entryRelationship>
+                            
+                            <!-- Affection Longue Durée -->
+                            <entryRelationship typeCode="SUBJ" inversionInd="false">
+                                <observation classCode="OBS" moodCode="EVN" negationInd="true">
+                                    <templateId root="2.16.840.1.113883.10.20.1.28"/>
+                                    <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.5"/>
+                                    <id root="e9014673-6682-493e-8714-62023797bcca"/>
+                                    <code code="G-1009" displayName="Diagnostic" codeSystem="1.2.250.1.213.2.12" codeSystemName="SNOMED 3.5"/>
+                                    <text><reference value="#ald"></reference></text>
+                                    <statusCode code="completed"/>
+                                    <effectiveTime>
+                                        <low nullFlavor="UNK"/>
+                                    </effectiveTime>
+                                    <value xsi:type="CD" code="MED-320" displayName="ALD" codeSystem="1.2.250.1.213.1.1.4.322" codeSystemName="TA_ASIP">
+										<originalText><reference value='#ald'/></originalText>
+									</value>
+                                </observation>
+                            </entryRelationship>
+
+							<!-- Surhandicap -->
+							<entryRelationship typeCode="SUBJ" inversionInd="false">
+								<observation classCode="OBS" moodCode="EVN" negationInd="true">
+									<templateId root="2.16.840.1.113883.10.20.1.28"/>
+									<templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.5"/>
+									<id root="bf6e6515-8c5f-4cfa-8f2f-55b98730748c"/>
+								    <code code="G-1009" displayName="Diagnostic" codeSystem="1.2.250.1.213.2.12" codeSystemName="SNOMED 3.5"/>
+									<text><reference value='#surhandicap'/>Surhandicap</text>
+									<statusCode code="completed"/>
+									<effectiveTime>
+										<low nullFlavor="UNK"/>
+									</effectiveTime>
+							  <value xsi:type="CD" code="MED-321" displayName="Surhandicap" codeSystem="1.2.250.1.213.1.1.4.322" codeSystemName="TA_ASIP">
+								<originalText><reference value='#surhandicap'/></originalText>
+							  </value>
+							</observation>
+							</entryRelationship>
+
+							<!-- Plurihandicap -->
+							<entryRelationship typeCode="SUBJ" inversionInd="false">
+								<observation classCode="OBS" moodCode="EVN" negationInd="true">
+									<templateId root="2.16.840.1.113883.10.20.1.28"/>
+									<templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.5"/>
+									<id root="bf6e6515-8c5f-4cfa-8f2f-55b98730748c"/>
+								    <code code="G-1009" displayName="Diagnostic" codeSystem="1.2.250.1.213.2.12" codeSystemName="SNOMED 3.5"/>
+									<text><reference value='#plurihandicap'/>Plurihandicap</text>
+									<statusCode code="completed"/>
+									<effectiveTime>
+										<low nullFlavor="UNK"/>
+									</effectiveTime>
+									<value xsi:type="CD" code="MED-322" displayName="Plurihandicap" codeSystem="1.2.250.1.213.1.1.4.322" codeSystemName="TA_ASIP">
+										<originalText><reference value='#plurihandicap'/></originalText>
+									</value>
+								</observation>
+							</entryRelationship>
+
+							<!-- Polyhandicap -->
+							<entryRelationship typeCode="SUBJ" inversionInd="false">
+								<observation classCode="OBS" moodCode="EVN" negationInd="true">
+									<templateId root="2.16.840.1.113883.10.20.1.28"/>
+									<templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.5"/>
+									<id root="bf6e6515-8c5f-4cfa-8f2f-55b98730748c"/>
+								    <code code="G-1009" displayName="Diagnostic" codeSystem="1.2.250.1.213.2.12" codeSystemName="SNOMED 3.5"/>
+									<text><reference value='#polyhandicap'/>Polyhandicap</text>
+									<statusCode code="completed"/>
+									<effectiveTime>
+										<low nullFlavor="UNK"/>
+									</effectiveTime>
+									<value xsi:type="CD" code="MED-323" displayName="Polyhandicap" codeSystem="1.2.250.1.213.1.1.4.322" codeSystemName="TA_ASIP">
+										<originalText><reference value='#polyhandicap'/></originalText>
+									</value>
+								</observation>
+							</entryRelationship>
+
+							<!-- Polypathologies -->
+							<entryRelationship typeCode="SUBJ" inversionInd="false">
+                                <observation classCode="OBS" moodCode="EVN" negationInd="true">
+                                    <templateId root="2.16.840.1.113883.10.20.1.28"/>
+                                    <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.5"/>
+                                    <id root="5fda934c-f89f-4ebd-8aea-ea91b4dda8ee"/>
+                                    <code code="G-1009" displayName="Diagnostic" codeSystem="1.2.250.1.213.2.12" codeSystemName="SNOMED 3.5"/>
+                                    <text><reference value="#polypathologies"></reference></text>
+                                    <statusCode code="completed"/>
+                                    <effectiveTime>
+                                        <low nullFlavor="UNK"/>
+                                    </effectiveTime>
+                                    <value xsi:type="CD" code="MED-324" displayName="Polypathologies" codeSystem="1.2.250.1.213.1.1.4.322" codeSystemName="TA_ASIP">
+                                        <originalText>
+                                            <reference value="#polypathologies"></reference>
+                                        </originalText>
+                                    </value>
+                                </observation>
+                            </entryRelationship>
+							
+                        </act>
+                    </entry>
+                </section>
+            </component>
+
+            <!-- Section État général  -->			
+            <component>  
+                <section>
+                    <templateId root="1.3.6.1.4.1.19376.1.5.3.1.1.9.16"/>
+                    <id root="f3423a4e-7741-4668-854e-67d20d893aa6"/>
+                    <code code="10210-3" displayName="État général" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
+					<title>Evaluation handicap moteur (E2)</title>
+									
+					<text>	
+						<table border="1">
+							<thead align="left">
+								<tr><th>Déficience physique</th><th>Observation</th></tr>
+							</thead>
+							<tbody align="left">
+								<tr><td>Paralysies</td><td><content ID="paralysie">non</content></td></tr>
+								<tr><td>Spasticité gênante</td><td><content ID="spasticite">oui (sévère)</content></td></tr>
+								<tr><td>Anesthésie</td><td><content ID="anesthesie">non</content></td></tr>		
+								<tr><td>Aphasie</td><td><content ID="aphasie">non</content></td></tr>
+								<tr><td>Négligence visuospatiale</td><td><content ID="negliVisuospatiale">non</content></td></tr>
+								<tr><td>HLH-QLH</td><td><content ID="hlh">non</content></td></tr>
+								<tr><td>Trouble de la déglutition</td><td><content ID="troubleDeglutition">non</content></td></tr>
+								<tr><td>Troubles de l'élimination urinaire</td><td><content ID="troubleUrinaire">non</content></td></tr>
+								<tr><td>Troubles de l'élimination fécale</td><td><content ID="troubleFecale">non</content></td></tr>								
+								<tr><td>Troubles de la sexualité</td><td><content ID="troubleSexualite">non</content></td></tr>				
+							</tbody>
+						</table>                 
+					</text>  
+					
+                    <!-- [1..*] Entrées de type Pathologie -->
+					
+					<!-- Paralysie (non : negationInd="true") -->
+                    <entry> 
+                        <observation classCode="OBS" moodCode="EVN" negationInd="true">
+                            <templateId root="2.16.840.1.113883.10.20.1.28"/>
+                            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.5"/>
+                            <id root="bd700abb-e639-455d-8f6e-c020348be892"/>
+                            <code code="G-1009" displayName="Diagnostic" codeSystem="1.2.250.1.213.2.12" codeSystemName="SNOMED 3.5"/>
+                            <text><reference value="#paralysie"></reference></text>
+                            <statusCode code="completed"/>
+                            <effectiveTime><low nullFlavor="UNK"/></effectiveTime> 
+                            <value xsi:type="CD" code="F-A0840" displayName="Paralysie"  codeSystem="1.2.250.1.213.2.12" codeSystemName="SNOMED 3.5">
+                                <originalText><reference value="#paralysie"></reference></originalText>
+                            </value>
+                        </observation>    
+                    </entry>
+					
+					<!-- Spasticité genante (oui : negationInd="false") -->
+                    <entry> 
+                        <observation classCode="OBS" moodCode="EVN" negationInd="false">
+                            <templateId root="2.16.840.1.113883.10.20.1.28"/>
+                            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.5"/>
+                            <id root="fa3e3c70-005f-4311-ab87-d877ad1aa169"/>
+                            <code code="G-1009" displayName="Diagnostic" codeSystem="1.2.250.1.213.2.12" codeSystemName="SNOMED 3.5"/>
+                            <text><reference value="#spasticite"></reference></text>
+                            <statusCode code="completed"/>
+                            <effectiveTime><low nullFlavor="UNK"/></effectiveTime> 
+                            <value xsi:type="CD" code="MED-329" displayName="Spasticité génante" codeSystem="1.2.250.1.213.1.1.4.322" codeSystemName="TA_ASIP">
+                                <originalText><reference value="#spasticite"></reference></originalText>
+                            </value>
+ 							<!-- Sévérité -->
+                            <entryRelationship typeCode="SUBJ" inversionInd="true">
+                                <observation classCode="OBS" moodCode="EVN">
+                                    <templateId root="2.16.840.1.113883.10.20.1.55"/>
+                                    <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.1"/>
+                                    <code code="SEV" displayName="Severity" codeSystem="2.16.840.1.113883.5.4" codeSystemName="ActCode" />
+                                    <text><reference value="#spasticite-severite"></reference></text>
+                                    <statusCode code="completed"/>
+                                    <value xsi:type="CD" code="H" codeSystem="2.16.840.1.113883.5.1063" codeSystemName="ObservationValue"/>
+                                </observation>
+                            </entryRelationship>  
+                        </observation>    
+                    </entry>
+					
+                    <!-- Anesthésie (non : negationInd="true") -->
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN" negationInd="true">
+                            <templateId root="2.16.840.1.113883.10.20.1.28"/>
+                            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.5"/>
+                            <id root="15df6e9a-f0ad-4dd9-8426-eda90f6a7fb8"/>
+                            <code code="G-1009" displayName="Diagnostic" codeSystem="1.2.250.1.213.2.12" codeSystemName="SNOMED 3.5"/>
+                            <text><reference value="#anesthesie"></reference></text>
+                            <statusCode code="completed"/>
+                            <effectiveTime><low nullFlavor="UNK"/></effectiveTime>
+                            <value xsi:type="CD" code="F-A2005" displayName="Anesthésies" codeSystem="1.2.250.1.213.2.12" codeSystemName="SNOMED 3.5">
+                                <originalText><reference value="#anesthesie"></reference></originalText>
+                            </value>  
+                        </observation>    
+                    </entry>
+					
+                    <!-- Aphasie (non : negationInd="true") -->
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN" negationInd="true">
+                            <templateId root="2.16.840.1.113883.10.20.1.28"/>
+                            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.5"/>
+                            <id root="15df6e9a-f0ad-4dd9-8426-eda90f6a7fb8"/>
+                            <code code="G-1009" displayName="Diagnostic" codeSystem="1.2.250.1.213.2.12" codeSystemName="SNOMED 3.5"/>
+                            <text><reference value="#aphasie"></reference></text>
+                            <statusCode code="completed"/>
+                            <effectiveTime><low nullFlavor="UNK"/></effectiveTime>
+                            <value xsi:type="CD" code="F-A6000" displayName="Aphasie" codeSystem="1.2.250.1.213.2.12" codeSystemName="SNOMED 3.5">
+                                <originalText><reference value="#aphasie"></reference></originalText>
+                            </value>  
+                        </observation>    
+                    </entry>
+					
+					<!--- Négligence visuospatiale (non : negationInd="true") -->
+                    <entry> 
+                        <observation classCode="OBS" moodCode="EVN" negationInd="true">
+                            <templateId root="2.16.840.1.113883.10.20.1.28"/>
+                            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.5"/>
+                            <id root="5fbe4f73-dad3-4b92-a12e-8552bb088813"/>
+                            <code code="G-1009" displayName="Diagnostic" codeSystem="1.2.250.1.213.2.12" codeSystemName="SNOMED 3.5"/>
+                            <text><reference value="#negliVisuospatiale"></reference></text>
+                            <statusCode code="completed"/>
+                            <effectiveTime><low nullFlavor="UNK"/></effectiveTime>
+                            <value xsi:type="CD" code="MED-330" displayName="Négligence visuospatiale" codeSystem="1.2.250.1.213.1.1.4.322" codeSystemName="TA_ASIP">
+                                <originalText><reference value="#negliVisuospatiale"></reference></originalText>
+                            </value>
+                            
+                        </observation>    
+                    </entry>
+					
+					<!-- HLH-QLH (non : negationInd="true") -->
+                    <entry> 
+                        <observation classCode="OBS" moodCode="EVN" negationInd="true">
+                            <templateId root="2.16.840.1.113883.10.20.1.28"/>
+                            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.5"/>
+                            <id root="18931f24-6c7b-46f9-90c8-02480fd80ae9"/>
+                            <code code="G-1009" displayName="Diagnostic" codeSystem="1.2.250.1.213.2.12" codeSystemName="SNOMED 3.5"/>
+                            <text><reference value="#hlh"></reference></text>
+                            <statusCode code="completed"/>
+                            <effectiveTime><low nullFlavor="UNK"/></effectiveTime>
+                            <value xsi:type="CD" code="MED-331" displayName="HLH-QLH" codeSystem="1.2.250.1.213.1.1.4.322" codeSystemName="TA_ASIP">
+                                <originalText><reference value="#hlh"></reference></originalText>
+                            </value>
+                        </observation>    
+                    </entry>
+					
+					<!--- Troubles de la déglutition (non : negationInd="true") -->
+                    <entry> 
+                        <observation classCode="OBS" moodCode="EVN" negationInd="true">
+                            <templateId root="2.16.840.1.113883.10.20.1.28"/>
+                            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.5"/>
+                            <id root="ab4ea9eb-5172-42f7-9fd7-21ba58a9a64a"/>
+                            <code code="G-1009" displayName="Diagnostic" codeSystem="1.2.250.1.213.2.12" codeSystemName="SNOMED 3.5"/>
+                            <text><reference value="#troubleDeglutition"></reference></text>
+                            <statusCode code="completed"/>
+                            <effectiveTime><low nullFlavor="UNK"/></effectiveTime>
+                            <value xsi:type="CD" code="MED-332" displayName="Troubles de la déglutition " codeSystem="1.2.250.1.213.1.1.4.322" codeSystemName="TA_ASIP">
+                                <originalText><reference value="#troubleDeglutition"></reference></originalText>
+                            </value>
+                            
+                        </observation>    
+                    </entry>
+					
+					<!--- Troubles de l'élimination urinaire (non : negationInd="true") -->
+                    <entry> 
+                        <observation classCode="OBS" moodCode="EVN" negationInd="true">
+                            <templateId root="2.16.840.1.113883.10.20.1.28"/>
+                            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.5"/>
+                            <id root="ce022886-8ee1-4a04-87e4-576cf77e367e"/>
+                            <code code="G-1009" displayName="Diagnostic" codeSystem="1.2.250.1.213.2.12" codeSystemName="SNOMED 3.5"/>
+                            <text><reference value="#troubleUrinaire"></reference></text>
+                            <statusCode code="completed"/>
+                            <effectiveTime><low nullFlavor="UNK"/></effectiveTime>
+                            <value xsi:type="CD" code="MED-333" displayName="Troubles de l'élimination urinaire" codeSystem="1.2.250.1.213.1.1.4.322" codeSystemName="TA_ASIP">
+                                <originalText><reference value="#troubleUrinaire"></reference></originalText>
+                            </value>
+                            
+                        </observation> 
+                    </entry>
+					
+					<!-- Troubles de l'élimination fécale (non : negationInd="true") -->
+                    <entry> 
+                        <observation classCode="OBS" moodCode="EVN" negationInd=" true">
+                            <templateId root="2.16.840.1.113883.10.20.1.28"/>
+                            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.5"/>
+                            <id root="bb11b505-1826-4e1d-8db6-7aca1243a095"/>
+                            <code code="G-1009" displayName="Diagnostic" codeSystem="1.2.250.1.213.2.12" codeSystemName="SNOMED 3.5"/>
+                            <text><reference value="#troubleFecale"></reference></text>
+                            <statusCode code="completed"/>
+                            <effectiveTime><low nullFlavor="UNK"/></effectiveTime>
+                            <value xsi:type="CD" code="MED-334" displayName="Troubles de l'élimination fécale" codeSystem="1.2.250.1.213.1.1.4.322" codeSystemName="TA_ASIP">
+                                <originalText><reference value="#troubleFecale"></reference></originalText>
+                            </value>
+						</observation>    
+                    </entry>
+					
+					<!--- Troubles de la sexualité (non : negationInd="true") -->
+                    <entry> 
+                        <observation classCode="OBS" moodCode="EVN" negationInd="true">
+                            <templateId root="2.16.840.1.113883.10.20.1.28"/>
+                            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.5"/>
+                            <id root="867fb252-9135-4e00-b4db-27ebc0440dcf"/>
+                            <code code="G-1009" displayName="Diagnostic" codeSystem="1.2.250.1.213.2.12" codeSystemName="SNOMED 3.5"/>
+                            <text><reference value="#troubleSexualite"></reference></text>
+                            <statusCode code="completed"/>
+                            <effectiveTime><low nullFlavor="UNK"/></effectiveTime>
+                            <value xsi:type="CD" code="MED-335" displayName="Troubles de la sexualité" codeSystem="1.2.250.1.213.1.1.4.322" codeSystemName="TA_ASIP">
+                                <originalText><reference value="troubleSexualite"></reference></originalText>
+                            </value>   
+                        </observation>    
+                    </entry>                   
+                </section>
+            </component>
+       
+			<!-- Section Fonctions physiques -->
+            <component>
+                <section>
+                    <templateId root="1.3.6.1.4.1.19376.1.5.3.1.1.12.2.5"/>  
+                    <id root="a182d212-6671-4809-ba07-d22c97dace75"/>
+                    <code code="46006-3" displayName="Problèmes physiques fonctionnels et structurels" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>								
+					<text>	
+						<table border="1">
+							<thead align="left">
+								<tr><th>Délimitation d'activité</th><th>Observation</th></tr>
+							</thead>
+							<tbody align="left">
+								<tr><td>Se lever seul</td><td><content ID="seLeverSeul">oui</content></td></tr>
+								<tr><td>Risque de chute</td><td><content ID="chute">oui</content></td></tr>
+								<tr><td>Faire ses transferts (une surface à l'autre)</td><td><content ID="transferts">oui</content></td></tr>
+								<tr><td>Marcher seul à l'intérieur</td><td><content ID="marcherSeulInt">oui</content></td></tr>		
+								<tr><td>Marcher seul à l'extérieur (transports)</td><td><content ID="marcherSeulExt">oui</content></td></tr>
+								<tr><td>Se déplacer en fauteuil roulant seul</td><td><content ID="fauteuilRoulant">oui</content></td></tr>
+								<tr><td>Faire sa toilette seul</td><td><content ID="toiletteSeul">oui</content></td></tr>
+								<tr><td>Utiliser les wc seul</td><td><content ID="wcSeul">oui</content></td></tr>
+								<tr><td>Manger un repas préparé seul</td><td><content ID="repasSeul">oui</content></td></tr>								
+								<tr><td>Incontinence</td><td><content ID="incontinence">oui</content></td></tr>		
+								<tr><td>Communiquer : proches</td><td><content ID="communiquer">oui</content></td></tr>							
+								<tr><td>Extérieur (appel secours, courses…)</td><td><content ID="exterieur">oui</content></td></tr>							
+								<tr><td>Gérer ses comptes /affaires personnelles</td><td><content ID="gererComptes">oui</content></td></tr>							
+								<tr><td>Gérer seul ses traitements</td><td><content ID="traitementsSeul">oui</content></td></tr>							
+								<tr><td>Le patient bénéficie-t-il d’une aide humaine ?</td><td><content ID="aideHumaine">oui (Aide soignante : 2 heures/jour)</content></td></tr>
+							</tbody>
+						</table>                 
+					</text>  										
+					<!-- Faire ses transferts -->
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.13"/>
+                            <templateId root="2.16.840.1.113883.10.20.1.31"/>
+                            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.1.12.3.6"/>
+                            <id root="51f9adfa-befe-4cc1-8186-799fb48d5fb2"/>
+                            <code code="45590-7" displayName="Faire ses transferts" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
+                            <text><reference value="#transferts"></reference></text>
+                            <statusCode code="completed"/>
+                            <effectiveTime><low nullFlavor="UNK"/></effectiveTime>
+                            <value xsi:type="BL" value="true"/>
+                        </observation> 
+                    </entry>					
+					
+					<!-- Se lever seul -->
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.13"/>
+                            <templateId root="2.16.840.1.113883.10.20.1.31"/>
+                            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.1.12.3.6"/>
+                            <id root="a182d212-6671-4809-ba07-d22c97dace75"/>
+                            <code code="45588-1" displayName="se lever seul" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
+                            <text><reference value="#seLeverSeul"></reference></text>
+                            <statusCode code="completed"/>
+                            <effectiveTime><low nullFlavor="UNK"/></effectiveTime>
+                            <value xsi:type="BL" value="true"/>
+                        </observation> 
+                    </entry>
+
+					<!-- Marcher seul à l'intérieur -->
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.13"/>
+                            <templateId root="2.16.840.1.113883.10.20.1.31"/>
+                            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.1.12.3.6"/>
+                            <id root="9c1a05bc-1ac1-48c4-9b4e-b00ea0fd14d6"/>
+                            <code code="45592-3" displayName="Marcher seul à l'intérieur" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
+                            <text><reference value="marcherSeulInt"></reference></text>
+                            <statusCode code="completed"/>
+                            <effectiveTime><low nullFlavor="UNK"/></effectiveTime>
+                            <value xsi:type="BL" value="true"/>
+                        </observation> 
+                    </entry>
+					
+					<!-- Marcher seul à l'extérieur -->
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.13"/>
+                            <templateId root="2.16.840.1.113883.10.20.1.31"/>
+                            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.1.12.3.6"/>
+                            <id root="de4ed06e-e00c-4e2b-a31c-5d04edfa8893"/>
+                            <code code="GEN-148" displayName="Marcher seul à l'exterieur (transports)" codeSystem="1.2.250.1.213.1.1.4.322" codeSystemName="TA_ASIP"/>
+                            <text><reference value="marcherSeulExt"></reference></text>
+                            <statusCode code="completed"/>
+                            <effectiveTime><low nullFlavor="UNK"/></effectiveTime>
+                            <value xsi:type="BL" value="true"/>
+                        </observation> 
+                    </entry>
+					
+					<!-- Se déplacer en fauteuil roulant seul -->
+					<entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.13"/>
+                            <templateId root="2.16.840.1.113883.10.20.1.31"/>
+                            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.1.12.3.6"/>
+                            <id root="bc75d8bc-f3a4-4c19-8852-236ede411b2a"/>
+                            <code code="45537-8" displayName="Se déplacer en fauteuil roulant seul" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
+                            <text><reference value="#fauteuilRoulant"></reference></text>
+                            <statusCode code="completed"/>
+                            <effectiveTime><low nullFlavor="UNK"/></effectiveTime>
+                            <value xsi:type="BL" value="true"/>
+                        </observation> 
+                    </entry>
+
+					<!--risque de chute -->
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.13"/>
+                            <templateId root="2.16.840.1.113883.10.20.1.31"/>
+                            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.1.12.3.6"/>
+                            <id root="34dcfc38-9630-4e58-938e-5c541960f47f"/>
+                            <code code="GEN-144" displayName="Risque de chute" codeSystem="1.2.250.1.213.1.1.4.322" codeSystemName="TA_ASIP"/>
+                            <text><reference value="#chute"></reference></text>
+                            <statusCode code="completed"/>
+                            <effectiveTime><low nullFlavor="UNK"/></effectiveTime>
+                            <value xsi:type="BL" value="true"/>
+                        </observation> 
+                    </entry>
+
+                    <!-- Faire sa toilette seul -->
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.13"/>
+                            <templateId root="2.16.840.1.113883.10.20.1.31"/>
+                            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.1.12.3.6"/>
+                            <id root="c916a82a-026c-4d5d-82c6-dfc187d7aacb"/>
+                            <code code="45606-1" displayName="Faire sa toilette seul" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
+                            <text><reference value="#toiletteSeul"></reference></text>
+                            <statusCode code="completed"/>
+                            <effectiveTime><low nullFlavor="UNK"/></effectiveTime>
+                            <value xsi:type="BL" value="true"/>
+                        </observation> 
+                    </entry>
+					
+					<!-- Utiliser les wc seul -->
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.13"/>
+                            <templateId root="2.16.840.1.113883.10.20.1.31"/>
+                            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.1.12.3.6"/>
+                            <id root="1e08ad7f-90c5-4051-b13b-57eadbe0b1d4"/>
+                            <code code="45604-6" displayName="Utiliser les wc seul" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
+                            <text><reference value="#wcSeul"></reference></text>
+                            <statusCode code="completed"/>
+                            <effectiveTime><low nullFlavor="UNK"/></effectiveTime>
+                            <value xsi:type="BL" value="true"/>
+                        </observation> 
+                    </entry>
+					
+					<!-- Manger un repas preparé seul -->
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.13"/>
+                            <templateId root="2.16.840.1.113883.10.20.1.31"/>
+                            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.1.12.3.6"/>
+                            <id root="aba43791-c7ce-47b0-a05e-31740d04776a"/>
+                            <code code="45602-0" displayName="Manger un repas preparé seul" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
+                            <text><reference value="#repasSeul"></reference></text>
+                            <statusCode code="completed"/>
+                            <effectiveTime><low nullFlavor="UNK"/></effectiveTime>
+                            <value xsi:type="BL"   value="true"/>
+                        </observation> 
+                    </entry>
+					
+					<!-- Gérer seul ses traitements -->
+					<entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.13"/>
+                            <templateId root="2.16.840.1.113883.10.20.1.31"/>
+                            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.1.12.3.6"/>
+                            <id root="9bc4c64a-759f-4109-bc4a-9824203563d3"/>
+                            <code code="GEN-147" displayName="Gérer seul ses traitements" codeSystem="1.2.250.1.213.1.1.4.322" codeSystemName="TA_ASIP"/>
+                            <text><reference value="#traitementsSeul"></reference></text>
+                            <statusCode code="completed"/>
+                            <effectiveTime><low nullFlavor="UNK"/></effectiveTime>
+                            <value xsi:type="BL" value="true"/>
+                        </observation> 
+                    </entry>
+					
+					<!--incontinence-->
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.13"/>
+                            <templateId root="2.16.840.1.113883.10.20.1.31"/>
+                            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.1.12.3.6"/>
+                            <id root="8fb84f4e-a2a7-409f-b195-c5344905846a"/>
+                            <code code="GEN-145" displayName="Incontinence" codeSystem="1.2.250.1.213.1.1.4.322" codeSystemName="TA_ASIP"/>
+                            <text><reference value="#incontinence"></reference></text>
+                            <statusCode code="completed"/>
+                            <effectiveTime><low nullFlavor="UNK"/></effectiveTime>
+                            <value xsi:type="BL" value="true"/>
+                        </observation> 
+                    </entry>
+					
+					<!-- Communiquer : proches -->
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.13"/>
+                            <templateId root="2.16.840.1.113883.10.20.1.31"/>
+                            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.1.12.3.6"/>
+                            <id root="c9617fcc-ea3d-4fbf-8b37-a2f4d47f6ffa"/>
+                            <code code="GEN-149" displayName="Communiquer : proches" codeSystem="1.2.250.1.213.1.1.4.322" codeSystemName="TA_ASIP"/>
+                            <text><reference value="#communiquer"></reference></text>
+                            <statusCode code="completed"/>
+                            <effectiveTime><low nullFlavor="UNK"/></effectiveTime>
+                            <value xsi:type="BL" value="true"/>
+                        </observation> 
+                    </entry>
+					
+					<!-- Extérieur (appel secours, courses…) -->
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.13"/>
+                            <templateId root="2.16.840.1.113883.10.20.1.31"/>
+                            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.1.12.3.6"/>
+                            <id root="3337597c-1c76-48d6-b4f2-3aaeb875bcc9"/>
+                            <code code="GEN-150" displayName="Extérieur (appel secours, courses…)" codeSystem="1.2.250.1.213.1.1.4.322" codeSystemName="TA_ASIP"/>
+                            <text><reference value="#exterieur"></reference></text>
+                            <statusCode code="completed"/>
+                            <effectiveTime><low nullFlavor="UNK"/></effectiveTime>
+                            <value xsi:type="BL" value="true"/>
+                        </observation> 
+                    </entry>
+					
+					<!-- Gérer ses comptes et ses affaires personnelles -->
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.13"/>
+                            <templateId root="2.16.840.1.113883.10.20.1.31"/>
+                            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.1.12.3.6"/>
+                            <id root="8eba81a2-4143-4e63-8664-648105dbc4b6"/>
+                            <code code="GEN-146" displayName="Gérer ses comptes et ses affaires personnelles" codeSystem="1.2.250.1.213.1.1.4.322" codeSystemName="TA_ASIP"/>
+                            <text><reference value="comptes"></reference></text>
+                            <statusCode code="completed"/>
+                            <effectiveTime><low nullFlavor="UNK"/></effectiveTime>
+                            <value xsi:type="BL" value="true"/>
+                        </observation> 
+                    </entry>
+
+					<!-- Le patient bénéficie-t-il d’une aide humaine ? -->
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.13"/>
+                            <templateId root="2.16.840.1.113883.10.20.1.31"/>
+                            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.1.12.3.6"/>
+                            <id root="c7e9e140-7739-44d1-84c8-7b96c0e6e34f"/>
+                            <code code="GEN-151" displayName="Le patient bénéficie-t-il d’une aide humaine ?" codeSystem="1.2.250.1.213.1.1.4.322" codeSystemName="TA_ASIP"/>
+                            <text><reference value="#aideHumaine"></reference></text>
+                            <statusCode code="completed"/>
+                            <effectiveTime><low nullFlavor="UNK"/></effectiveTime>
+                            <value xsi:type="BL" value="true"/>
+							<!-- Si oui laquelle ? -->
+							 <entryRelationship typeCode='SUBJ' inversionInd='true'>
+							   <act classCode='ACT' moodCode='EVN'>
+								 <templateId root='2.16.840.1.113883.10.20.1.40'/>
+								 <templateId root='1.3.6.1.4.1.19376.1.5.3.1.4.2'/>
+								 <code code='48767-8' displayName='Commentaire' codeSystem='2.16.840.1.113883.6.1' codeSystemName='LOINC'/>
+								 <text><reference value='#aideHumaine'/></text>
+								 <statusCode code='completed'/>
+								 <effectiveTime nullFlavor="UNK"/>
+							   </act>
+							 </entryRelationship>
+                        </observation> 
+                    </entry> 
+                </section>
+            </component>
+
+            <!-- section Système nerveux  -->
+            <component>
+                <section>
+                    <templateId root="1.3.6.1.4.1.19376.1.5.3.1.1.9.35"/>
+                    <id root="3ba16828-a44d-4f3c-907f-c51be6893b06" />
+                    <code code="10202-0" displayName="Système nerveux" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
+					<title>Evaluation neuropsychocognitive (E3)</title>
+					<text>	
+						<table border="1">
+							<thead align="left">
+								<tr><th>Délimitation d'activité</th><th>Observation</th></tr>
+							</thead>
+							<tbody align="left">
+								<tr><td>Syndrome dysexécutif</td><td><content ID="dysexecutif">non</content></td></tr>
+								<tr><td>Détérioration intellectuelle</td><td><content ID="deterioration">oui (Sévère)</content></td></tr>
+							</tbody>
+						</table>                 
+					</text>  			
+					
+					<!-- Syndrôme dysexecutif / absent (negationInd="true") -->
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN" negationInd="true">
+                            <templateId root="2.16.840.1.113883.10.20.1.28"/>
+                            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.5"/>
+                            <id root="7d8dce68-773c-456a-a4e6-a2c0046d6f86"/> 
+                            <code code="G-1009" displayName="Diagnostic" codeSystem="1.2.250.1.213.2.12" codeSystemName="SNOMED 3.5"/>
+                            <text><reference value="#dysexecutif"></reference></text>
+                            <statusCode code="completed"/>
+                            <effectiveTime><low nullFlavor="UNK"/></effectiveTime>
+                            <value xsi:type="CD" code="MED-337" displayName="Syndrôme dysexecutif" codeSystem="1.2.250.1.213.1.1.4.322" codeSystemName="TA_ASIP">
+                                <originalText><reference value="#dysexecutif"></reference></originalText>
+                            </value>   
+                        </observation> 
+                    </entry>
+					
+                    <!-- Détérioration intellectuelle -->
+                    <entry>  
+                        <observation classCode="OBS" moodCode="EVN" negationInd="false">
+                            <templateId root="2.16.840.1.113883.10.20.1.28"/>
+                            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.5"/>
+                            <id root="fa3e3c70-005f-4311-ab87-d877ad1aa169"/>
+                            <code code="G-1009" displayName="Diagnostic" codeSystem="1.2.250.1.213.2.12" codeSystemName="SNOMED 3.5"/>
+                            <text><reference value="#deterioration"></reference></text>
+                            <statusCode code="completed"/>
+                            <effectiveTime><low nullFlavor="UNK"/></effectiveTime>
+                            <value xsi:type="CD" code="MED-338" displayName="Détérioration intellectuelle" codeSystem="1.2.250.1.213.1.1.4.322" codeSystemName="TA_ASIP">
+                                <originalText><reference value="#deterioration"></reference></originalText>
+                            </value>
+							<!-- Sévérité -->
+                            <entryRelationship typeCode="SUBJ" inversionInd="true">
+                                <observation classCode="OBS" moodCode="EVN">
+                                    <templateId root="2.16.840.1.113883.10.20.1.55"/>
+                                    <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.1"/>
+                                    <code code="SEV" displayName="Severity" codeSystem="2.16.840.1.113883.5.4" codeSystemName="ActCode" />
+                                    <text><reference value="#deterioration-sev"></reference></text> 
+                                    <statusCode code="completed"/>
+                                    <value xsi:type="CD" code="H" codeSystem="2.16.840.1.113883.5.1063" codeSystemName="ObservationValue"/>
+                                </observation>
+                            </entryRelationship>   
+                        </observation>    
+                    </entry>    
+                </section>
+            </component>				
+					
+            <!-- Section Plan de soins  1 --> 
+            <component>
+                <section>
+                    <templateId root="2.16.840.1.113883.10.20.1.10"/>
+                    <templateId root="1.3.6.1.4.1.19376.1.5.3.1.3.36"/>
+                    <id root="1f6536d7-6adb-41ec-b5bc-ba960c137ef3"/>
+                    <code code="18776-5" displayName="Plan de soins"  codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
+					<title>Plan de soins</title>
+					<text>
+						<table border="1">
+							<tbody align="left">
+								<tr><td>Bilan initial étiologique</td><td><content ID="bilanInitial">oui</content></td></tr>
+								<tr><td>Ce qui a été prévu ultérieurement a-t-il été fait ?</td><td><content ID="fait">oui</content></td></tr>
+							</tbody>
+						</table>
+						<br/>
+						<table border="1">
+							<thead align="left">
+								<tr><th>Besoin d'un bilan complémentaire</th><th>Fait</th><th>A faire ou à refaire</th></tr>
+							</thead>
+							<tbody align="left">
+								<tr><td><content ID="bilanOrtho">Orthophoniste</content></td><td><content ID="bilanOrthoFait">oui</content></td><td><content ID="bilanOrthoAFaire">non</content></td></tr>
+								<tr><td>Kinésithérapeute</td><td>non</td><td>non</td></tr>
+								<tr><td>Ergothérapeute</td><td>non</td><td>non</td></tr>
+								<tr><td>Autre</td><td>non</td><td>non</td></tr>
+							</tbody>
+						</table>
+						<br/>
+						<table border="1">
+							<thead align="left">
+								<tr><th>Besoin d'un avis médical complémentaire</th><th>Observation</th></tr>
+							</thead>
+							<tbody align="left">																
+								<tr><td>Neurologue</td><td><content ID="neuro">oui</content></td></tr>								
+								<tr><td>MPR</td><td><content ID="mpr">non</content></td></tr>
+								<tr><td>Gériatre</td><td><content ID="geriatre">non</content></td></tr>
+								<tr><td>Cardiologue</td><td><content ID="cardio">oui</content></td></tr>
+								<tr><td>Autre</td><td><content ID="autre">Orthopédiste</content></td></tr>
+							</tbody>
+						</table>
+						<br/>
+						<table border="1">
+							<thead align="left">
+								<tr><th>Besoin d'un soutien psychothérapeutique</th><th>Observation</th></tr>
+							</thead>
+							<tbody align="left">			
+								<tr><td>Patient</td><td><content ID="soutienPatient">oui</content></td></tr>
+								<tr><td>Proche</td><td><content ID="soutienProche">Enfant</content></td></tr>						
+							</tbody>
+						</table>
+						<br/>
+						<table border="1">
+							<thead align="left">
+								<tr><th>Mesures de protection</th><th>Observation</th></tr>
+							</thead>
+							<tbody align="left">			
+								<tr><td>Juridique</td><td><content ID="protectionJuridique">A envisager</content></td></tr>
+								<tr><td>Reprise professionnelle</td><td><content ID="protectionProfessionnelle">Reprise à envisager. Démarches faites</content></td></tr>						
+							</tbody>
+						</table>
+						<br/>
+						<table border="1">
+							<thead align="left">
+								<tr><th>Conduite automobile</th><th>Observation</th></tr>
+							</thead>
+							<tbody align="left">			
+								<tr><td>Conduite formellement contre-indiquée</td><td><content ID="conduiteContreindiquee">oui</content></td></tr>						
+							</tbody>
+						</table>
+						<br/>
+						<table border="1">
+							<thead align="left">
+								<tr><th>Evaluation entourage environnemental (E5)</th><th>Observation</th></tr>
+							</thead>
+							<tbody align="left">			
+								<tr><td>Lieu de vie</td><td><content ID="lieuDeVie">Domicile</content></td></tr>			
+								<tr><td>Mode de vie</td><td><content ID="modeDeVie">En couple</content></td></tr>				
+								<tr><td>Diagnostic autonomie de l'habitat</td><td><content ID="diagnosticHabitat">Fait</content></td></tr>				
+								<tr><td>Dossier Maison départementale des personnes handicapées (MDPH) en cours, adapté</td><td><content ID="mdph">oui</content></td></tr>				
+								<tr><td>Allocation personnalisée d’autonomie (APA) à mettre en oeuvre ou à rédapter</td><td><content ID="apa">non</content></td></tr>				
+								<tr><td>Prestation de compensation du handicap (PCH) à mettre en oeuvre ou à rédapter</td><td><content ID="pch">non</content></td></tr>				
+								<tr><td>Allocation aux adultes handicapés (AAH) à mettre en oeuvre ou à rédapter</td><td><content ID="aah">non</content></td></tr>				
+								<tr><td>Allocation de solidarité aux personnes âgées (ASPA) /Allocation supplémentaire d'invalidité (ASI) à mettre en oeuvre ou à rédapter</td><td><content ID="aspa">non</content></td></tr>					
+								<tr><td>Souhait et projet de vie de la personne</td><td><content ID="souhait">Retour au domicile</content></td></tr>							
+							</tbody>
+						</table>										
+					</text>  
+					
+					<!-- Bilan initial étiologique -->
+                    <entry>
+                      <observation classCode="OBS" moodCode="GOL">
+                        <templateId root="1.3.6.1.4.1.19376.1.5.3.1.1.20.3.1"/>  
+                        <templateId root="2.16.840.1.113883.10.20.1.25"/>
+                        <id root="5c4a5231-b0b3-4702-9f63-b2f822527356"/>  
+                        <code code="MED-326" displayName="Bilan initial étiologique" codeSystem="1.2.250.1.213.1.1.4.322" codeSystemName="TA_ASIP"/>
+                        <text><reference value="#bilanInitial"></reference></text>
+                        <statusCode code="active"/>
+                        <effectiveTime nullFlavor="NASK"/>
+                        <value xsi:type="BL" value="true"/>
+                      </observation>
+                    </entry>
+					
+					<!-- Ce qui a été prévu ultérieurement a-t-il été fait ? -->
+                    <entry>
+                       <observation classCode="OBS" moodCode="GOL">
+                            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.1.20.3.1"/>  
+                            <templateId root="2.16.840.1.113883.10.20.1.25"/>
+                            <id root="ad79c43e-925f-493b-8776-318e41585000"/>  
+                            <code code="MED-327" displayName="Ce qui a été prévu ultérieurement a-t-il été fait?" codeSystem="1.2.250.1.213.1.1.4.322" codeSystemName="TA_ASIP"/>
+                            <text> <reference value="#fait"/></text>
+                            <statusCode code="active"/>
+                            <effectiveTime nullFlavor="NASK"/>
+                            <value xsi:type="BL" value="true"/>
+                       </observation>
+                    </entry>
+					
+					<!-- Besoin d’un bilan complémentaire -->
+                    <entry>
+                        <observation classCode="OBS" moodCode="GOL">
+                            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.1.20.3.1"/>  
+                            <templateId root="2.16.840.1.113883.10.20.1.25"/>
+                            <id root="4f4bec16-0662-4c19-83fb-a1afecae208c"/>   
+                            <code code="MED-319" displayName="Besoin d’un bilan complémentaire" codeSystem="1.2.250.1.213.1.1.4.322" codeSystemName="TA_ASIP"/>
+                            <text><reference value="#bilanOrtho"/></text>
+                            <statusCode code="active"/>
+                            <effectiveTime nullFlavor="NASK"/>
+                            <value xsi:type="CD" code="G15_91" displayName="Orthophoniste" codeSystem="1.2.250.1.213.1.1.4.5" codeSystemName="TRE_A02-ProfessionSavFaire-CISIS"/>
+							<!-- Fait ? -->
+                            <entryRelationship typeCode="SUBJ" inversionInd="true">
+                                <observation classCode="OBS" moodCode="EVN">
+                                    <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.13"/>
+                                    <id root="6624ae03-dd2e-484f-b89a-2e09df282311"/>
+                                    <code code="GEN-118" displayName="Fait" codeSystem="1.2.250.1.213.1.1.4.322" codeSystemName="TA_ASIP"/>
+                                    <text><reference value="#bilanOrthoFait"></reference></text>
+                                    <statusCode code="completed"/>
+                                    <effectiveTime nullFlavor="NA"/>
+                                    <value xsi:type="BL" value="true"/>
+                                </observation>
+                            </entryRelationship>
+							<!-- A faire / A refaire ? -->
+                            <entryRelationship typeCode="SUBJ" inversionInd="true">
+                                <observation classCode="OBS" moodCode="EVN">
+                                    <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.13"/>
+                                    <id root="6624ae03-dd2e-484f-b89a-2e09df282311"/>
+                                    <code code="GEN-118" displayName="A faire / A refaire" codeSystem="1.2.250.1.213.1.1.4.322" codeSystemName="TA_ASIP"/>
+                                    <text><reference value="#bilanOrthoAFaire"></reference></text>
+                                    <statusCode code="completed"/>
+                                    <effectiveTime nullFlavor="NA"/>
+                                    <value xsi:type="BL" value="false"/>
+                                </observation>
+                            </entryRelationship>
+                        </observation>
+                    </entry>
+					
+                    <!-- Besoin d'un avis médical complémentaire / MPR (besoin 	absent) -->   
+                    <entry>
+                        <observation classCode="OBS" moodCode="GOL" negationInd="true">
+                            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.1.20.3.1"/>
+                            <templateId root="2.16.840.1.113883.10.20.1.25"/>
+                            <id root="40874114-8ae9-4bf4-835b-6001231079ee"/>
+                            <code code="MED-012" displayName="Avis spécialisé" codeSystem="1.2.250.1.213.1.1.4.322" codeSystemName="TA_ASIP"/>
+                            <text><reference value="#ortho"></reference></text>
+                            <statusCode code="active"/>
+                            <effectiveTime nullFlavor="MSK" />
+                            <value xsi:type="CD"  code="ORG-169" displayName="MPR" codeSystem="1.2.250.1.213.1.1.4.322" codeSystemName="TA_ASIP"/>  
+                        </observation>
+                    </entry>
+                    
+                    <!-- Besoin d'un avis medical complémentaire / Cardiologue (besoin présent) v-->    
+                    <entry>
+                        <observation classCode="OBS" moodCode="GOL" negationInd="false">
+                            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.1.20.3.1"/>
+                            <templateId root="2.16.840.1.113883.10.20.1.25"/>
+                            <id root="40874114-8ae9-4bf4-835b-6001231079ee"/>
+                            <code code="MED-012" displayName="Avis spécialisé" codeSystem="1.2.250.1.213.1.1.4.322" codeSystemName="TA_ASIP"/>
+                            <text><reference value="#cardio"></reference></text>
+                            <statusCode code="active"/>
+                            <effectiveTime nullFlavor="MSK" />
+                            <value xsi:type="CD" code="G15_10/C07" displayName="Cardiologue"  codeSystem="1.2.250.1.213.1.1.4.5" codeSystemName="AuthorSpeciality"/>  
+                        </observation>
+                    </entry>
+					
+                    <!-- Besoin d'un avis medical complémentaire / Neurologue (besoin présent) v-->    
+                    <entry>
+                        <observation classCode="OBS" moodCode="GOL" negationInd="false">
+                            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.1.20.3.1"/>
+                            <templateId root="2.16.840.1.113883.10.20.1.25"/>
+                            <id root="40874114-8ae9-4bf4-835b-6001231079ee"/>
+                            <code code="MED-012" displayName="Avis spécialisé" codeSystem="1.2.250.1.213.1.1.4.322" codeSystemName="TA_ASIP"/>
+                            <text><reference value="#neuro"></reference></text>
+                            <statusCode code="active"/>
+                            <effectiveTime nullFlavor="MSK" />
+                            <value xsi:type="CD" code="G15_10/C43" displayName="Neurologue" codeSystem="1.2.250.1.213.1.1.4.5" codeSystemName="AuthorSpeciality"/>  
+                        </observation>
+                    </entry>
+					
+                    <!-- Besoin d'un avis medical complémentaire / Gériatre (besoin absent) v-->    
+                    <entry>
+                        <observation classCode="OBS" moodCode="GOL" negationInd="true">
+                            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.1.20.3.1"/>
+                            <templateId root="2.16.840.1.113883.10.20.1.25"/>
+                            <id root="40874114-8ae9-4bf4-835b-6001231079ee"/>
+                            <code code="MED-012" displayName="Avis spécialisé" codeSystem="1.2.250.1.213.1.1.4.322" codeSystemName="TA_ASIP"/>
+                            <text><reference value="#geriatre"></reference></text>
+                            <statusCode code="active"/>
+                            <effectiveTime nullFlavor="MSK" />
+                            <value xsi:type="CD" code="G15_10/DSM213" displayName="Gériatre" codeSystem="1.2.250.1.213.1.1.4.5" codeSystemName="AuthorSpeciality"/>  
+                        </observation>
+                    </entry>		
+					
+                    <!-- Besoin d'un avis medical complémentaire / Autre (besoin présent) v-->    
+                    <entry>
+                        <observation classCode="OBS" moodCode="GOL" negationInd="false">
+                            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.1.20.3.1"/>
+                            <templateId root="2.16.840.1.113883.10.20.1.25"/>
+                            <id root="40874114-8ae9-4bf4-835b-6001231079ee"/>
+                            <code code="MED-012" displayName="Avis spécialisé" codeSystem="1.2.250.1.213.1.1.4.322" codeSystemName="TA_ASIP"/> 
+                            <text><reference value="#autre"></reference></text>
+                            <statusCode code="active"/>
+                            <effectiveTime nullFlavor="MSK" />
+                            <value xsi:type="ST">Orthopédiste</value>  
+                        </observation>
+                    </entry>
+					
+                    <!-- Besoin d’un soutien psychothérapeutique / Patient -->
+					<entry>
+                        <observation classCode="OBS" moodCode="GOL">
+                            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.1.20.3.1"/>  
+                            <templateId root="2.16.840.1.113883.10.20.1.25"/>
+                            <id root="f4f62ee6-970b-4d3a-932b-af2f9b0a60ec"/>  
+                            <code  code="MED-317" displayName="Besoin d'un soutien psychotérapeutique" codeSystem="1.2.250.1.213.1.1.4.322" codeSystemName="TA_ASIP"/> 
+                            <text><reference value="#soutienPatient"></reference></text>
+                            <statusCode code="active"/>
+                            <effectiveTime nullFlavor="NA"/>
+                            <value xsi:type="BL" value="true"/>
+                        </observation> 
+                    </entry>		
+					
+                    <!-- Besoin d’un soutien psychothérapeutique / Proche -->
+					<entry>
+                        <observation classCode="OBS" moodCode="GOL">
+                            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.1.20.3.1"/>  
+                            <templateId root="2.16.840.1.113883.10.20.1.25"/>
+                            <id root="f4f62ee6-970b-4d3a-932b-af2f9b0a60ec"/>  
+                            <code  code="MED-317" displayName="Besoin d'un soutien psychotérapeutique" codeSystem="1.2.250.1.213.1.1.4.322" codeSystemName="TA_ASIP"/> 
+                            <text><reference value="#soutienProche"></reference></text>
+                            <statusCode code="active"/>
+                            <effectiveTime nullFlavor="NA"/>
+                            <value xsi:type="BL" value="true"/>
+                            <subject typeCode="SBJ">
+                                <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.15.2"/>
+                                <relatedSubject classCode='PRS'>
+                                    <code code="CHILD" displayName="Enfant" codeSystem="2.16.840.1.113883.5.111" codeSystemName="roleCode"/>                                   
+                                </relatedSubject>
+                            </subject>    
+                        </observation> 
+                    </entry>
+					
+                    <!-- Mesure de protection juridique -->
+                    <entry>
+                        <observation classCode="OBS" moodCode="GOL">
+                            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.1.20.3.1"/>
+                            <templateId root="2.16.840.1.113883.10.20.1.25"/>
+                            <id root="4615cec8-3aef-4f85-9803-54457c09fc37"/>
+                            <code code="GEN-120" displayName="Mesure de protection" codeSystem="1.2.250.1.213.1.1.4.322" codeSystemName="TA_ASIP"/>
+                            <text><reference value="#protectionJuridique"></reference></text>
+                            <statusCode code="active"/>
+                            <effectiveTime nullFlavor="NASK"/>
+                            <value xsi:type='CD' code="GEN-121" displayName="A envisager" codeSystem="1.2.250.1.213.1.1.4.322" codeSystemName="TA_ASIP"/>
+                        </observation>
+                    </entry>
+					
+                    <!-- Mesure de protection / Reprise professionnelle -->
+                    <entry>
+                        <observation classCode="OBS" moodCode="GOL">
+                            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.1.20.3.1"/>
+                            <templateId root="2.16.840.1.113883.10.20.1.25"/>
+                            <id root="fdb63df9-3b56-4c5a-9202-d71594f3317b"/>
+                            <code code="GEN-124" displayName="Mesures de protection / Reprise professionnelle" codeSystem="1.2.250.1.213.1.1.4.322" codeSystemName="TA_ASIP"/>
+                            <text><reference value="#protectionProfessionnelle"></reference></text>
+                            <statusCode code="active"/>
+                            <effectiveTime nullFlavor="MSK" />
+                            <value xsi:type="CD" code="GEN-125" displayName="Reprise à envisager. Démarches faites." codeSystem="1.2.250.1.213.1.1.4.322" codeSystemName="TA_ASIP"/>
+                        </observation>
+                    </entry>
+
+                    <!-- Mesure de protection / Conduite automobile -->					
+                    <entry>
+                        <observation classCode="OBS" moodCode="GOL" negationInd='false' >
+                            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.1.20.3.1"/>
+                            <templateId root="2.16.840.1.113883.10.20.1.25"/>
+                            <id root="e7cebf1e-e468-4707-963e-631e26fafae3"/>
+                            <code code="GEN-127" displayName="Mesures de protection / Conduite automobile" codeSystem="1.2.250.1.213.1.1.4.322" codeSystemName="TA_ASIP"/>
+                            <text><reference value="#conduiteContreindiquee"></reference></text>
+                            <statusCode code="active"/>
+                            <effectiveTime  nullFlavor="MSK"/>
+                            <value xsi:type="CD" code="GEN-128" displayName="Conduite formellement contre-indiquée" codeSystem="1.2.250.1.213.1.1.4.322" codeSystemName="TA_ASIP"/>   
+                        </observation>
+                    </entry>
+					
+                    <!-- Mesure de protection / Conduite automobile -->					
+                    <entry>
+                        <observation classCode="OBS" moodCode="GOL" negationInd='false' >
+                            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.1.20.3.1"/>
+                            <templateId root="2.16.840.1.113883.10.20.1.25"/>
+                            <id root="e7cebf1e-e468-4707-963e-631e26fafae3"/>
+                            <code code="GEN-127" displayName="Mesures de protection / Conduite automobile" codeSystem="1.2.250.1.213.1.1.4.322" codeSystemName="TA_ASIP"/>
+                            <text><reference value="#conduitePossible"></reference></text>
+                            <statusCode code="active"/>
+                            <effectiveTime  nullFlavor="MSK"/>
+                            <value xsi:type="CD" code="GEN-129" displayName="Conduite possible sans permis spécial" codeSystem="1.2.250.1.213.1.1.4.322" codeSystemName="TA_ASIP"/>   
+                        </observation>
+                    </entry>
+					
+                    <!-- Mesure de protection / Conduite automobile -->					
+                    <entry>
+                        <observation classCode="OBS" moodCode="GOL" negationInd='false' >
+                            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.1.20.3.1"/>
+                            <templateId root="2.16.840.1.113883.10.20.1.25"/>
+                            <id root="e7cebf1e-e468-4707-963e-631e26fafae3"/>
+                            <code code="GEN-127" displayName="Mesures de protection / Conduite automobile" codeSystem="1.2.250.1.213.1.1.4.322" codeSystemName="TA_ASIP"/>
+                            <text><reference value="#conduiteDemarche"></reference></text>
+                            <statusCode code="active"/>
+                            <effectiveTime  nullFlavor="MSK"/>
+                            <value xsi:type="CD" code="GEN-130" displayName="Les démarches ont-elles été faites ? (Commission médicale)" codeSystem="1.2.250.1.213.1.1.4.322" codeSystemName="TA_ASIP"/>   
+                        </observation>
+                    </entry>
+					
+					<!-- Lieu de vie -->
+                    <entry>
+                        <observation classCode="OBS" moodCode="GOL">
+                            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.1.20.3.1"/>
+                            <templateId root="2.16.840.1.113883.10.20.1.25"/>
+                            <id root="9e4e8d00-9562-471d-8dbe-7e2518b0186f"/>
+                            <code code="GEN-131" displayName="Lieu de vie" codeSystem="1.2.250.1.213.1.1.4.322" codeSystemName="TA_ASIP"/>
+                            <text><reference value="#lieuDeVie"></reference></text>
+                            <statusCode code="active"/>
+                            <effectiveTime />
+                            <value xsi:type="CD" code="GEN-117" displayName="Domicile" codeSystem="1.2.250.1.213.1.1.4.322" codeSystemName="TA_ASIP"/>
+                        </observation>
+                    </entry>
+					
+                    <!-- Mode de vie -->
+                    <entry>
+                        <observation classCode="OBS" moodCode="GOL">
+                            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.1.20.3.1"/>
+                            <templateId root="2.16.840.1.113883.10.20.1.25"/>
+                            <id root="311fda29-7766-4911-9b04-a0ab1b72925d"/>
+                            <code code="GEN-132" displayName="Mode de vie" codeSystem="1.2.250.1.213.1.1.4.322" codeSystemName="TA_ASIP"/>
+                            <text><reference value="#modeDeVie"></reference></text>
+                            <statusCode code="active"/>
+                            <effectiveTime nullFlavor="MSK" />
+                            <value xsi:type="CD" code="GEN-133" displayName="En couple" codeSystem="1.2.250.1.213.1.1.4.322" codeSystemName="TA_ASIP"/>  
+                        </observation>
+                    </entry>
+					
+                    <!-- Diagnostic autonomie de l'habitat -->
+                    <entry>
+                        <observation classCode="OBS" moodCode="GOL">
+                            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.1.20.3.1"/>
+                            <templateId root="2.16.840.1.113883.10.20.1.25"/>
+                            <id root="5074e36e-4a88-4e6c-8be0-5ac0b0149562"/>
+                            <code code="GEN-142" displayName="Diagnostic autonomie de l'habitat" codeSystem="1.2.250.1.213.1.1.4.322" codeSystemName="TA_ASIP"/>
+                            <text><reference value="#diagnosticHabitat"></reference></text>
+                            <statusCode code="active"/>
+                            <effectiveTime nullFlavor="NA"/>
+                            <value xsi:type="ST"/>
+							<!-- Fait ? -->
+                            <entryRelationship typeCode="SUBJ" inversionInd="true">
+                                <observation classCode="OBS" moodCode="EVN">
+                                    <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.13"/>
+                                    <id root="6624ae03-dd2e-484f-b89a-2e09df282311"/>
+                                    <code code="GEN-118" displayName="Fait" codeSystem="1.2.250.1.213.1.1.4.322" codeSystemName="TA_ASIP"/>
+                                    <text><reference value="#bilanFait"></reference></text>
+                                    <statusCode code="completed"/>
+                                    <effectiveTime nullFlavor="NA"/>
+                                    <value xsi:type="BL" value="true"/>
+                                </observation>
+                            </entryRelationship>
+							<!-- A faire / A refaire ? -->
+                            <entryRelationship typeCode="SUBJ" inversionInd="true">
+                                <observation classCode="OBS" moodCode="EVN">
+                                    <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.13"/>
+                                    <id root="6624ae03-dd2e-484f-b89a-2e09df282311"/>
+                                    <code code="GEN-118" displayName="A faire / A refaire" codeSystem="1.2.250.1.213.1.1.4.322" codeSystemName="TA_ASIP"/>
+                                    <text><reference value="#bilanAFaire"></reference></text>
+                                    <statusCode code="completed"/>
+                                    <effectiveTime nullFlavor="NA"/>
+                                    <value xsi:type="BL" value="false"/>
+                                </observation>
+                            </entryRelationship>
+                        </observation>
+                    </entry>
+
+                    <!-- Aides de mises en œuvre / Dossier Maison départementale des personnes handicapées (MDPH) en cours, adapté -->
+                    <entry>
+                        <observation classCode="OBS" moodCode="GOL">
+                            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.1.20.3.1"/>
+                            <templateId root="2.16.840.1.113883.10.20.1.25"/>
+                            <id root="0821d1e4-d8fc-46dc-af4f-b6953ac7ec8b"/>
+                            <code code="GEN-136" displayName="Dossier MDPH en cours,adapté" codeSystem="1.2.250.1.213.1.1.4.322" codeSystemName="TA_ASIP"/>
+                            <text><reference value="#mdph"></reference></text>
+                            <statusCode code="active"/>
+                            <effectiveTime  nullFlavor="NASK"/>
+                            <value xsi:type="BL"  value="true"/>
+                        </observation>
+                    </entry> 
+                    <!-- Aides de mises en œuvre / APA / à ne pas mettre en oeuvre (negationInd='true') -->
+                    <entry>
+                        <observation classCode="OBS" moodCode="GOL" negationInd='true'>
+                            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.1.20.3.1"/>
+                            <templateId root="2.16.840.1.113883.10.20.1.25"/>
+                            <id root="0821d1e4-d8fc-46dc-af4f-b6953ac7ec8b"/>
+                            <code code="GEN-137" displayName="Dossier à mettre en œuvre ou à réadapter" codeSystem="1.2.250.1.213.1.1.4.322" codeSystemName="TA_ASIP"/>
+                            <text><reference value="#apa"></reference></text>
+                            <statusCode code="active"/>
+                            <effectiveTime nullFlavor="NASK" />
+                            <value xsi:type="CD" code="GEN-138" displayName="Allocation personnalisée d’autonomie (APA)" codeSystem="1.2.250.1.213.1.1.4.322" codeSystemName="TA_ASIP"/>
+                        </observation>
+                    </entry>
+					<!-- Aides de mises en œuvre / PCH / à ne pas mettre en oeuvre (negationInd='true') -->
+                    <entry>
+                        <observation classCode="OBS" moodCode="GOL" negationInd='true'>
+                            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.1.20.3.1"/>
+                            <templateId root="2.16.840.1.113883.10.20.1.25"/>
+                            <id root="0821d1e4-d8fc-46dc-af4f-b6953ac7ec8b"/>
+                            <code code="GEN-137" displayName="Dossier à mettre en œuvre ou à réadapter" codeSystem="1.2.250.1.213.1.1.4.322" codeSystemName="TA_ASIP"/>
+                            <text><reference value="#pch"></reference></text>
+                            <statusCode code="active"/>
+                            <effectiveTime nullFlavor="NASK" />
+                            <value xsi:type="CD" code="GEN-139" displayName="Prestation de compensation du handicap (PCH)" codeSystem="1.2.250.1.213.1.1.4.322" codeSystemName="TA_ASIP"/>
+                        </observation>
+                    </entry>
+					<!-- Aides de mises en œuvre / AAH / à ne pas mettre en oeuvre (negationInd='true') -->
+                    <entry>
+                        <observation classCode="OBS" moodCode="GOL" negationInd='true'>
+                            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.1.20.3.1"/>
+                            <templateId root="2.16.840.1.113883.10.20.1.25"/>
+                            <id root="0821d1e4-d8fc-46dc-af4f-b6953ac7ec8b"/>
+                            <code code="GEN-137" displayName="Dossier à mettre en œuvre ou à réadapter" codeSystem="1.2.250.1.213.1.1.4.322" codeSystemName="TA_ASIP"/>
+                            <text><reference value="#aah"></reference></text>
+                            <statusCode code="active"/>
+                            <effectiveTime nullFlavor="NASK" />
+                            <value xsi:type="CD" code="GEN-140" displayName="Allocation aux adultes handicapés (AAH)" codeSystem="1.2.250.1.213.1.1.4.322" codeSystemName="TA_ASIP"/>
+                        </observation>
+                    </entry>
+					<!-- Aides de mises en œuvre / ASPA-ASI / à ne pas mettre en oeuvre (negationInd='true') -->
+                    <entry>
+                        <observation classCode="OBS" moodCode="GOL" negationInd='true'>
+                            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.1.20.3.1"/>
+                            <templateId root="2.16.840.1.113883.10.20.1.25"/>
+                            <id root="0821d1e4-d8fc-46dc-af4f-b6953ac7ec8b"/>
+                            <code code="GEN-137" displayName="Dossier à mettre en œuvre ou à réadapter" codeSystem="1.2.250.1.213.1.1.4.322" codeSystemName="TA_ASIP"/>
+                            <text><reference value="#aspa"></reference></text>
+                            <statusCode code="active"/>
+                            <effectiveTime nullFlavor="NASK" />
+                            <value xsi:type="CD" code="GEN-141" displayName="Allocation de solidarité aux personnes âgées (ASPA) /Allocation supplémentaire d'invalidité (ASI)" 
+							                     codeSystem="1.2.250.1.213.1.1.4.322" codeSystemName="TA_ASIP"/>
+                        </observation>
+                    </entry>
+					
+					<!-- Souhait et projet de vie -->
+					<entry>
+                        <observation classCode="OBS" moodCode="GOL">
+                            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.1.20.3.1"/>  
+                            <templateId root="2.16.840.1.113883.10.20.1.25"/>
+                            <id root="ad79c43e-925f-493b-8776-318e41585000"/>  
+                            <code code="GEN-143" displayName="Souhait et projet de vie de la personne" codeSystem="1.2.250.1.213.1.1.4.322" codeSystemName="TA_ASIP"/>
+                            <text><reference value="#souhait"></reference> </text>
+                            <statusCode code="active"/>
+                            <effectiveTime nullFlavor="NASK"/>
+                            <value xsi:type="CD" code="ORG-101" displayName="Retour au domicile" codeSystem="1.2.250.1.213.1.1.4.322" codeSystemName="TA_ASIP"/>
+                        </observation>
+                    </entry>
+                </section>
+            </component>
+			
+            <!-- Section Plan de soins  2 --> 
+            <component>
+                <section>
+                    <templateId root="2.16.840.1.113883.10.20.1.10"/>
+                    <templateId root="1.3.6.1.4.1.19376.1.5.3.1.3.36"/>
+                    <id root="1f6536d7-6adb-41ec-b5bc-ba960c137ef3"/>
+                    <code code="18776-5" displayName="Plan de soins"  codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
+					<title>Synthèse</title>
+					<text>
+						<table border="1">
+							<thead align="left">
+								<tr><th>Contraintes du parcours de soin</th><th>Observation</th></tr>
+							</thead>
+							<tbody align="left">			
+								<tr><td>Réadaptation</td><td><content ID="readaptation">Infirmier</content></td></tr>
+								<tr><td>Appareillage</td><td><content ID="appareillage">Grand</content></td></tr>
+								<tr><td>Soins ou traitements nocturnes</td><td><content ID="soinsNocturnes">oui</content></td></tr>		
+								<tr><td>Ventilation</td><td><content ID="ventilation">non</content></td></tr>		
+								<tr><td>Contrainte alimentaire</td><td><content ID="alim">non</content></td></tr>
+								<tr><td>Association de soutien</td><td><content ID="associationSoutien">non</content></td></tr>
+							</tbody>
+						</table>
+						<br/>
+						<table border="1">
+							<thead align="left">
+								<tr><th>Traitement</th><th>Observation</th></tr>
+							</thead>
+							<tbody align="left">			
+								<tr><td>Traitement médical préventif de récidive</td><td><content ID="traitementPreventifRecidive">à modifier</content></td></tr>
+								<tr><td>Traitement médical préventif de complication</td><td><content ID="traitementPreventifComplication">à poursuivre</content></td></tr>
+								<tr><td>Prise en charge régulière / Consultation de spécialité</td><td><content ID="pecReguliereSpecialite">non</content></td></tr>
+								<tr><td>Prise en charge régulière / Education thérapeutique</td><td><content ID="pecReguliereEducation">non</content></td></tr>
+								<tr><td>Prévoir / Séjour de répit</td><td><content ID="prevoir1"></content>non</td></tr>			
+								<tr><td>Prévoir / Maison d'accueil spécialisé (MAS) / Foyer d'accueil médicalisé (FAM)</td><td><content ID="prevoir2"></content>non</td></tr>			
+								<tr><td>Prévoir / Hospitalisation complète</td><td><content ID="prevoir3"></content>non</td></tr>			
+								<tr><td>Prévoir / Hospitalisation à domicile (HAD)</td><td><content ID="prevoir4"></content>non</td></tr>			
+								<tr><td>Prévoir / Hôpital de jour (HDJ)</td><td><content ID="prevoir5"></content>non</td></tr>			
+								<tr><td>Prévoir / Services de soins infirmiers à domicile (SSIAD)</td><td><content ID="prevoir6"></content>oui</td></tr>												
+							</tbody>
+						</table>
+                    </text>
+
+                    <!-- Contraintes du parcours de soin / Réadaptation  -->
+                    <entry>
+                        <observation classCode="OBS" moodCode="GOL">
+                            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.1.20.3.1"/>
+                            <templateId root="2.16.840.1.113883.10.20.1.25"/>
+                            <id root="e3a5a048-c5cf-4a58-a462-4dcf9eb402db"/>
+                            <code code="GEN-158" displayName="Soins de réadaptation" codeSystem="1.2.250.1.213.1.1.4.322" codeSystemName="TA_ASIP"/> 
+                            <text><reference value="#readaptation"></reference></text>
+                            <statusCode code="active"/>
+                            <effectiveTime nullFlavor="NA"/>
+                            <value xsi:type="CD" code="G15_60" displayName="Infirmier" codeSystem="1.2.250.1.213.1.1.4.5" codeSystemName="TRE_A02-ProfessionSavFaire-CISIS"/>     
+                        </observation>
+                    </entry> 
+					                     
+                    <!-- Contraintes du parcours de soin / Appareillage  -->
+                    <entry> 
+                        <observation classCode="OBS" moodCode="GOL">
+                            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.1.20.3.1"/>
+                            <templateId root="2.16.840.1.113883.10.20.1.25"/>
+                            <id root="e3a5a048-c5cf-4a58-a462-4dcf9eb402db"/>
+                            <code code="MED-345" displayName="Appareillage" codeSystem="1.2.250.1.213.1.1.4.322" codeSystemName="TA_ASIP"/>  
+                            <text><reference value="#appareillage"></reference></text>
+                            <statusCode code="completed"/>
+                            <effectiveTime nullFlavor="NA"/>
+                            <value xsi:type="CD" code="GEN-153" displayName="Grand" codeSystem="1.2.250.1.213.1.1.4.322" codeSystemName="TA_ASIP"/>   
+                        </observation>
+                    </entry> 
+					                     
+                    <!-- Contraintes du parcours de soin / Soins ou traitements nocturnes  -->
+                    <entry>
+                        <observation classCode="OBS" moodCode="GOL">
+                            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.1.20.3.1"/>  
+                            <templateId root="2.16.840.1.113883.10.20.1.25"/>
+                            <id root="547889d7-4d22-428d-af1a-d8537018e431"/>  
+                            <code code="MED-527" displayName="Soins ou traitements nocturnes" codeSystem="1.2.250.1.213.1.1.4.322" codeSystemName="TA_ASIP"/>
+                            <text><reference value="#soinsNocturnes"></reference></text>
+                            <statusCode code="active"/>
+                            <effectiveTime nullFlavor="NASK"/>
+                            <value xsi:type="BL" value="true"/>
+                        </observation>
+                    </entry>
+					                     
+                    <!-- Contraintes du parcours de soin / Ventilation  -->
+					<entry>
+                        <observation classCode="OBS" moodCode="GOL">
+                            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.1.20.3.1"/>  
+                            <templateId root="2.16.840.1.113883.10.20.1.25"/>
+                            <id root="23bf4a94-a2cb-4a34-9ded-2a7f9708297b"/>  
+                            <code code="MED-528" displayName="Ventilation" codeSystem="1.2.250.1.213.1.1.4.322" codeSystemName="TA_ASIP"/>
+                            <text><reference value="#ventilation"></reference></text>
+                            <statusCode code="active"/>
+                            <effectiveTime nullFlavor="NASK"/>
+                            <value xsi:type="BL" value="false"/>
+                        </observation>
+                    </entry>					
+					
+					<!-- Contraintes du parcours de soin / Contrainte alimentaire -->
+                    <entry>
+                        <observation classCode="OBS" moodCode="GOL">
+                            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.1.20.3.1"/>  
+                            <templateId root="2.16.840.1.113883.10.20.1.25"/>
+                            <id root="bf78c84c-7967-4fd8-8b29-9dd5ae532cc3"/>  
+                            <code code="MED-529" displayName="Contrainte alimentaire" codeSystem="1.2.250.1.213.1.1.4.322" codeSystemName="TA_ASIP"/>
+                            <text><reference value="#alim"></reference></text>
+                            <statusCode code="active"/>
+                            <effectiveTime nullFlavor="NASK"/>
+                            <value xsi:type="BL" value="false"/>
+                        </observation>
+                    </entry> 				
+					
+					<!-- Objectif global du projet de vie / Association de soutien -->
+                    <entry> 
+                        <observation classCode="OBS" moodCode="GOL">
+                            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.1.20.3.1"/>
+                            <templateId root="2.16.840.1.113883.10.20.1.25"/>
+                            <id root="c57c354a-c8ab-4bc2-ba20-54cac7725a6a"/>
+                            <code code="MED-318" displayName="Association de soutien" codeSystem="1.2.250.1.213.1.1.4.322" codeSystemName="TA_ASIP"/>
+                            <text><reference value="#associationSoutien"></reference></text>
+                            <statusCode code="active"/>
+                            <effectiveTime nullFlavor="NASK"/>
+                            <value xsi:type="BL" value="false"/>
+                        </observation>
+                    </entry>
+					
+					<!-- Traitement / Traitement médical préventif de récidive -->
+					<entry> 
+						 <observation classCode="OBS" moodCode="GOL" negationInd="false">
+							<templateId root="1.3.6.1.4.1.19376.1.5.3.1.1.20.3.1"/>  
+                            <templateId root="2.16.840.1.113883.10.20.1.25"/>
+							<id root="3c1d98bb-b3f4-4f77-a26a-9v3b308c84f0"/>  
+							<code code="MED-530" displayName="Traitement médical préventif de récidive" codeSystem="1.2.250.1.213.1.1.4.322" codeSystemName="TA_ASIP"/>
+							<text><reference value="#traitementPreventifRecidive"></reference></text>
+                            <statusCode code="active"/>
+                            <effectiveTime nullFlavor="NASK"/>
+							<value xsi:type='CD' code="GEN-157" displayName="A modifier" codeSystem="1.2.250.1.213.1.1.4.322" codeSystemName="TA_ASIP"/>
+						 </observation>
+					</entry>
+										
+					<!-- Traitement / Traitement médical préventif de complication -->
+					<entry> 
+						 <observation classCode="OBS" moodCode="GOL" negationInd="false">
+							<templateId root="1.3.6.1.4.1.19376.1.5.3.1.1.20.3.1"/>  
+                            <templateId root="2.16.840.1.113883.10.20.1.25"/>
+							<id root="3c1d98bb-b3f4-4f77-a26a-9v3b308c84f0"/>  
+							<code code="MED-531" displayName="Traitement médical préventif de complication" codeSystem="1.2.250.1.213.1.1.4.322" codeSystemName="TA_ASIP"/>
+							<text><reference value="#traitementPreventifComplication"></reference></text>
+                            <statusCode code="active"/>
+                            <effectiveTime nullFlavor="NASK"/>
+							<value xsi:type='CD' code="GEN-156" displayName="A poursuivre" codeSystem="1.2.250.1.213.1.1.4.322" codeSystemName="TA_ASIP"/>
+						 </observation>
+					</entry>
+					
+					<!-- Traitement / Prise en charge régulière / Consultation de spécialité -->
+					<entry> 
+					  <observation classCode="OBS" moodCode="GOL" negationInd="false">
+						<templateId root="1.3.6.1.4.1.19376.1.5.3.1.1.20.3.1"/>  
+                        <templateId root="2.16.840.1.113883.10.20.1.25"/>
+						<id root="a0e42b1c-052f-4f9b-a6a2-0cf5c35dd374"/>  
+						<code code="ORG-163" displayName="Consultation de spécialité" codeSystem="1.2.250.1.213.1.1.4.322" codeSystemName="TA_ASIP"/>
+						<text><reference value="#pecReguliereSpecialite"></reference></text>
+                        <statusCode code="active"/>
+                        <effectiveTime nullFlavor="NASK"/>
+						<value xsi:type='BL' value="false"/>
+					  </observation>
+					</entry>
+					
+					<!-- Traitement / Prise en charge régulière / Education thérapeutique -->
+					<entry> 
+					  <observation classCode="OBS" moodCode="GOL" negationInd="false">
+						<templateId root="1.3.6.1.4.1.19376.1.5.3.1.1.20.3.1"/>  
+                        <templateId root="2.16.840.1.113883.10.20.1.25"/>
+						<id root="a0e42b1c-052f-4f9b-a6a2-0cf5c35dd374"/>  
+						<code code="ORG-164" displayName="Education thérapeutique" codeSystem="1.2.250.1.213.1.1.4.322" codeSystemName="TA_ASIP"/>
+						<text><reference value="#pecReguliereEducation"></reference></text>
+                        <statusCode code="active"/>
+                        <effectiveTime nullFlavor="NASK"/>
+						<value xsi:type='BL' value="false"/>
+					  </observation>
+					</entry>
+					
+					<!-- Traitement / Prévoir / Séjour de répit -->
+                    <entry>
+                        <observation classCode="OBS" moodCode="GOL" negationInd="true">
+                            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.1.20.3.1"/>
+                            <templateId root="2.16.840.1.113883.10.20.1.25"/>
+                            <id root="2344938f-179e-44d0-a842-b34741777998"/>
+                            <code code="GEN-161" displayName="Prévoir" codeSystem="1.2.250.1.213.1.1.4.322" codeSystemName="TA_ASIP"/>
+                            <text><reference value="#prevoir1"></reference></text>
+                            <statusCode code="active"/>
+                            <effectiveTime nullFlavor="NASK"/>
+                            <value xsi:type="CD" code="ORG-165" displayName="Séjour de répit" codeSystem="1.2.250.1.213.1.1.4.322" codeSystemName="TA_ASIP"/>
+                        </observation>
+                    </entry>
+					
+					<!-- Traitement / Prévoir / Maison d'accueil spécialisé (MAS) / Foyer d'accueil médicalisé (FAM) -->
+                    <entry>
+                        <observation classCode="OBS" moodCode="GOL" negationInd="true">
+                            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.1.20.3.1"/>
+                            <templateId root="2.16.840.1.113883.10.20.1.25"/>
+                            <id root="2344938f-179e-44d0-a842-b34741777998"/>
+                            <code code="GEN-161" displayName="Prévoir" codeSystem="1.2.250.1.213.1.1.4.322" codeSystemName="TA_ASIP"/>
+                            <text><reference value="#prevoir2"></reference></text>
+                            <statusCode code="active"/>
+                            <effectiveTime nullFlavor="NASK"/>
+                            <value xsi:type="CD" code="ORG-166" displayName="Maison d'accueil spécialisé (MAS) / Foyer d'accueil médicalisé (FAM)" codeSystem="1.2.250.1.213.1.1.4.322" codeSystemName="TA_ASIP"/>
+                        </observation>
+                    </entry>
+					
+					<!-- Traitement / Prévoir / Maison d'accueil spécialisé (MAS) / Hospitalisation complète -->
+                    <entry>
+                        <observation classCode="OBS" moodCode="GOL" negationInd="true">
+                            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.1.20.3.1"/>
+                            <templateId root="2.16.840.1.113883.10.20.1.25"/>
+                            <id root="2344938f-179e-44d0-a842-b34741777998"/>
+                            <code code="GEN-161" displayName="Prévoir" codeSystem="1.2.250.1.213.1.1.4.322" codeSystemName="TA_ASIP"/>
+                            <text><reference value="#prevoir3"></reference></text>
+                            <statusCode code="active"/>
+                            <effectiveTime nullFlavor="NASK"/>
+                            <value xsi:type="CD" code="ORG-167" displayName="Hospitalisation complète" codeSystem="1.2.250.1.213.1.1.4.322" codeSystemName="TA_ASIP"/>
+                        </observation>
+                    </entry>
+					
+					<!-- Traitement / Prévoir / Maison d'accueil spécialisé (MAS) / Hospitalisation à domicile (HAD) -->
+                    <entry>
+                        <observation classCode="OBS" moodCode="GOL" negationInd="true">
+                            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.1.20.3.1"/>
+                            <templateId root="2.16.840.1.113883.10.20.1.25"/>
+                            <id root="2344938f-179e-44d0-a842-b34741777998"/>
+                            <code code="GEN-161" displayName="Prévoir" codeSystem="1.2.250.1.213.1.1.4.322" codeSystemName="TA_ASIP"/>
+                            <text><reference value="#prevoir4"></reference></text>
+                            <statusCode code="active"/>
+                            <effectiveTime nullFlavor="NASK"/>
+                            <value xsi:type="CD" code="ORG-072" displayName="Hospitalisation à domicile (HAD)" codeSystem="1.2.250.1.213.1.1.4.322" codeSystemName="TA_ASIP"/>
+                        </observation>
+                    </entry>
+					
+					<!-- Traitement / Prévoir / Maison d'accueil spécialisé (MAS) / Hôpital de jour (HDJ) -->
+                    <entry>
+                        <observation classCode="OBS" moodCode="GOL" negationInd="true">
+                            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.1.20.3.1"/>
+                            <templateId root="2.16.840.1.113883.10.20.1.25"/>
+                            <id root="2344938f-179e-44d0-a842-b34741777998"/>
+                            <code code="GEN-161" displayName="Prévoir" codeSystem="1.2.250.1.213.1.1.4.322" codeSystemName="TA_ASIP"/>
+                            <text><reference value="#prevoir4"></reference></text>
+                            <statusCode code="active"/>
+                            <effectiveTime nullFlavor="NASK"/>
+                            <value xsi:type="CD" code="ORG-044" displayName="Hôpital de jour (HDJ)" codeSystem="1.2.250.1.213.1.1.4.322" codeSystemName="TA_ASIP"/>
+                        </observation>
+                    </entry>
+					
+					<!-- Traitement / Prévoir / Services de soins infirmiers à domicile (SSIAD) -->
+                    <entry>
+                        <observation classCode="OBS" moodCode="GOL" negationInd="false">
+                            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.1.20.3.1"/>
+                            <templateId root="2.16.840.1.113883.10.20.1.25"/>
+                            <id root="2344938f-179e-44d0-a842-b34741777998"/>
+                            <code code="GEN-161" displayName="Prévoir1" codeSystem="1.2.250.1.213.1.1.4.322" codeSystemName="TA_ASIP"/>
+                            <text><reference value="#prevoir1"></reference></text>
+                            <statusCode code="active"/>
+                            <effectiveTime nullFlavor="NASK"/>
+                            <value xsi:type="CD" code="ORG-168" displayName="Services de soins infirmiers à domicile (SSIAD)" codeSystem="1.2.250.1.213.1.1.4.322" codeSystemName="TA_ASIP"/>
+                        </observation>
+                    </entry>
+					
+                </section>               
+            </component>
+	
+			<!-- Section Fonctions physiques (codé) -->
+            <component>
+                <section>
+                    <templateId root="1.3.6.1.4.1.19376.1.5.3.1.1.12.2.5"/>
+                    <id root="7fae25de-7afe-43af-9bbc-bab68e73c07f" />
+                    <code code="46006-3" displayName="Problèmes physiques fonctionnels et structurels" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
+								
+					<text>
+						<table border="1">
+							<thead align="left">
+								<tr><th>Objectif global du projet de vie</th><th>Observation</th></tr>
+							</thead>
+							<tbody align="left">
+								<tr><td>Perte d'autonomie</td><td><content ID="perteAuto">GIR -1</content></td></tr>
+								<tr><td>Realisation effective d'activités</td><td><content ID="realisation">Seul</content></td></tr>
+							</tbody>
+						</table>
+						<br/>
+					</text>	
+					<!-- Entrée de type Questionnaire d’évalutation -->
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.13"/>
+                            <templateId root="2.16.840.1.113883.10.20.1.31"/>
+                            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.1.12.3.6"/>
+                            <id root="7a211896-769e-49a3-a31d-c809d175d518"/>
+                            <code code="MED-346" displayName="Perte d'autonomie" codeSystem="1.2.250.1.213.1.1.4.322" codeSystemName="TA_ASIP"/>
+                            <text><reference value="#perteAuto"></reference></text>
+                            <statusCode code="completed"/>
+                            <effectiveTime><low nullFlavor="UNK"/></effectiveTime>
+                            <value xsi:type="CD"  code="MED-339" displayName="GIR -1" codeSystem="1.2.250.1.213.1.1.4.322" codeSystemName="TA_ASIP"/> 
+                        </observation> 
+                    </entry>			
+					
+					<!--Realisation effective activites-->
+                    <entry> 
+                        <observation classCode="OBS" moodCode="EVN">
+                            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.13"/>
+                            <templateId root="2.16.840.1.113883.10.20.1.31"/>
+                            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.1.12.3.6"/>
+                            <id root="7c2faec1-14c0-49fc-9d31-54ff34d17b34" />
+                            <code code="MED-347" displayName="Realisation effective d'activités" codeSystem="1.2.250.1.213.1.1.4.322" codeSystemName="TA_ASIP"/>
+                            <text><reference value="#realisation"></reference></text>
+                            <statusCode code="completed"/>
+                            <effectiveTime><low nullFlavor="UNK"/></effectiveTime>
+                            <value xsi:type="CD"  code="GEN-135" displayName="Seul" codeSystem="1.2.250.1.213.1.1.4.322" codeSystemName="TA_ASIP"/>
+                        </observation>
+                    </entry>
+                </section>               
+            </component>
+        </structuredBody>
+    </component>
+    
+</ClinicalDocument>

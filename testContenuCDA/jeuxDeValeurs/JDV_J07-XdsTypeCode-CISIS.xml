@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<RetrieveValueSetResponse xmlns="urn:ihe:iti:svs:2008" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ihe:iti:svs:2008 SVS.xsd">
+    <ValueSet dateFin="" dateMaj="20180928120000" dateValid="20130123000000" description="XDS typeCode CI-SIS" displayName="JDV_J07-XdsTypeCode-CISIS.tabs" id="1.2.250.1.213.1.1.5.7" typeFichier="JDV" urlFichier="http://esante.gouv.fr/sites/NOS/TABS/JDV_J07-XdsTypeCode-CISIS.tabs">
+        <ConceptList>
+            <Concept code="BIL_AUTO" codeSystem="1.2.250.1.213.1.1.4.12" displayName="CR de bilan d'évaluation de la perte d'autonomie"/>
+            <Concept code="CERT_DECL" codeSystem="1.2.250.1.213.1.1.4.12" displayName="Certificat, déclaration"/>
+            <Concept code="DISP_AUT" codeSystem="1.2.250.1.213.1.1.4.12" displayName="Dispensation (autre)"/>
+            <Concept code="EXPPAT_1" codeSystem="1.2.250.1.213.1.1.4.12" displayName="Volontés et droits du patient"/>
+            <Concept code="EXPPAT_2" codeSystem="1.2.250.1.213.1.1.4.12" displayName="Document du patient"/>
+            <Concept code="EXPPAT_3" codeSystem="1.2.250.1.213.1.1.4.12" displayName="Directives anticipées"/>
+            <Concept code="PROT_ALD" codeSystem="1.2.250.1.213.1.1.4.12" displayName="Protocole de soins ALD"/>
+            <Concept code="REMB" codeSystem="1.2.250.1.213.1.1.4.12" displayName="Données de remboursement"/>
+            <Concept code="SYNTH" codeSystem="1.2.250.1.213.1.1.4.12" displayName="Synthèse"/>
+            <Concept code="11369-6" codeSystem="2.16.840.1.113883.6.1" displayName="Historique de vaccinations"/>
+            <Concept code="11488-4" codeSystem="2.16.840.1.113883.6.1" displayName="CR ou fiche de consultation ou de visite"/>
+            <Concept code="11490-0" codeSystem="2.16.840.1.113883.6.1" displayName="Lettre de liaison à la sortie d'un établissement de soins"/>
+            <Concept code="34112-3" codeSystem="2.16.840.1.113883.6.1" displayName="CR hospitalier (séjour)"/>
+            <Concept code="11502-2" codeSystem="2.16.840.1.113883.6.1" displayName="CR d'examens biologiques"/>
+            <Concept code="11505-5" codeSystem="2.16.840.1.113883.6.1" displayName="CR d'acte thérapeutique (autre)"/>
+            <Concept code="11506-3" codeSystem="2.16.840.1.113883.6.1" displayName="CR ou fiche de suivi de soins par auxiliaire médical"/>
+            <Concept code="11526-1" codeSystem="2.16.840.1.113883.6.1" displayName="CR d'anatomie et de cytologie pathologiques"/>
+            <Concept code="15507-7" codeSystem="2.16.840.1.113883.6.1" displayName="CR de passage aux urgences"/>
+            <Concept code="15508-5" codeSystem="2.16.840.1.113883.6.1" displayName="CR d'accouchement"/>
+            <Concept code="18776-5" codeSystem="2.16.840.1.113883.6.1" displayName="Plan personnalisé de soins"/>
+            <Concept code="18748-4" codeSystem="2.16.840.1.113883.6.1" displayName="CR d'imagerie médicale"/>
+            <Concept code="18761-7" codeSystem="2.16.840.1.113883.6.1" displayName="Note de transfert (dont lettre de liaison à l'entrée en établissement de soins)"/>
+            <Concept code="34133-9" codeSystem="2.16.840.1.113883.6.1" displayName="Synthèse d'épisode de soins"/>
+            <Concept code="34749-2" codeSystem="2.16.840.1.113883.6.1" displayName="CR de consultation pré-anesthésique"/>
+            <Concept code="34794-8" codeSystem="2.16.840.1.113883.6.1" displayName="CR de réunion de concertation pluridisciplinaire"/>
+            <Concept code="34874-8" codeSystem="2.16.840.1.113883.6.1" displayName="CR opératoire"/>
+            <Concept code="47420-5" codeSystem="2.16.840.1.113883.6.1" displayName="CR de bilan fonctionnel (par auxiliaire médical)"/>
+            <Concept code="51969-4" codeSystem="2.16.840.1.113883.6.1" displayName="CR de génétique moléculaire"/>
+            <Concept code="52040-3" codeSystem="2.16.840.1.113883.6.1" displayName="Document encapsulant une image d'illustration non DICOM"/>
+            <Concept code="57828-6" codeSystem="2.16.840.1.113883.6.1" displayName="Prescription (autre)"/>
+            <Concept code="57832-8" codeSystem="2.16.840.1.113883.6.1" displayName="Prescription de soins"/>
+            <Concept code="57833-6" codeSystem="2.16.840.1.113883.6.1" displayName="Prescription de médicaments"/>
+            <Concept code="60591-5" codeSystem="2.16.840.1.113883.6.1" displayName="Synthèse du dossier médical"/>
+            <Concept code="60593-1" codeSystem="2.16.840.1.113883.6.1" displayName="Dispensation médicamenteuse"/>
+            <Concept code="67851-6" codeSystem="2.16.840.1.113883.6.1" displayName="CR d'admission"/>
+            <Concept code="70004-7" codeSystem="2.16.840.1.113883.6.1" displayName="CR d'acte diagnostique (autre)"/>
+            <Concept code="75482-0" codeSystem="2.16.840.1.113883.6.1" displayName="CR d'acte thérapeutique à visée préventive"/>
+            <Concept code="75492-9" codeSystem="2.16.840.1.113883.6.1" displayName="CR d'acte diagnostique à visée préventive ou de dépistage"/>
+            <Concept code="75496-0" codeSystem="2.16.840.1.113883.6.1" displayName="Demande d'acte de télémédecine"/>
+            <Concept code="75497-8" codeSystem="2.16.840.1.113883.6.1" displayName="CR de télé-médecine"/>
+            <Concept code="77436-4" codeSystem="2.16.840.1.113883.6.1" displayName="CR d'anesthésie"/>
+            <Concept code="80565-5" codeSystem="2.16.840.1.113883.6.1" displayName="CR d'administration de médicaments"/>
+            <Concept code="85208-7" codeSystem="2.16.840.1.113883.6.1" displayName="Compte-rendu d'acte de télémédecine"/>
+            <Concept code="E1762" codeSystem="ASTM" displayName="Full Document"/>
+        </ConceptList>
+    </ValueSet>
+</RetrieveValueSetResponse>
